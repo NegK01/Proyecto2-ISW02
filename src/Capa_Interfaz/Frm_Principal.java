@@ -4,6 +4,8 @@
  */
 package Capa_Interfaz;
 
+import java.awt.Color;
+
 /**
  *
  * @author Usuario
@@ -13,8 +15,13 @@ public class Frm_Principal extends javax.swing.JFrame {
     /**
      * Creates new form Frm_Principal
      */
+    private final Color transparente = new Color(0,0,0, 0); // Utilizamos esta combinacion para poner un fondo transparente
+    private final Color seleccionado = new Color(17, 114, 255, 50); // Color que tendra un boton al momento de ser seleciconado
+    
     public Frm_Principal() {
         initComponents();
+        jButton1.setBackground(transparente);
+        setSize(1080, 677); //1080, 642
     }
 
     /**
@@ -26,21 +33,43 @@ public class Frm_Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButton1 = new javax.swing.JButton();
+        Background_Menu = new javax.swing.JLabel();
+        Background_Menu1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Cerrrar Sesion");
+        jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 280, -1));
+
+        Background_Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/test.png"))); // NOI18N
+        getContentPane().add(Background_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 610, 440));
+
+        Background_Menu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/test.png"))); // NOI18N
+        getContentPane().add(Background_Menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 180, 610, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//        try {
+            Frm_Login login = new Frm_Login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            setVisible(false);
+//            repaint();
+//            revalidate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(JF_Principal.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +107,8 @@ public class Frm_Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background_Menu;
+    private javax.swing.JLabel Background_Menu1;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
