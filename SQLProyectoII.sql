@@ -3,7 +3,7 @@
 Create database TransportesIIIPatitos
 ---------------------------------------------------------|
 -- Mauricio Oporta Rosales
--- Elías Salas Méndez
+-- ElÃ­as Salas MÃ©ndez
 ---------------------------------------------------------|
 Use TransportesIIIPatitos
 ---------------------------------------------------------|
@@ -11,8 +11,9 @@ Use TransportesIIIPatitos
 
  -- Usuarios --
 Create Table Usuarios(  
-	Usuario     Varchar(50),
-	Contraseña  Varchar(50)
+	Usuario     Varchar(50) Primary Key,
+	ContraseÃ±a  Varchar(50) Not Null,
+	Rol         Varchar(50) Not Null
 );
 
  -- Vehiculos --
