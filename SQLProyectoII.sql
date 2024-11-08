@@ -9,51 +9,88 @@ Use TransportesIIIPatitos
 ---------------------------------------------------------|
 -- Crear Tablas -----------------------------------------|
 
- -- Usuarios --
-Create Table Usuarios(  
-	Usuario     Varchar(50) Primary Key,
-	Contraseña  Varchar(50) Not Null,
-	Rol         Varchar(50) Not Null
+-- Usuarios --
+CREATE TABLE Usuarios(  
+    id_usuario	int primary key,
+	usuario		varchar(55) not null,
+	contraseña	varchar(55) not null,
+	rol			int not null, -- Considerar Tabla roles
 );
 
- -- Vehiculos --
-Create Table Vehiculos();
+-- Vehiculos --
+CREATE TABLE Vehiculos(
+    id_vehiculo			int primary key,
+	placa				varchar(20) unique not null,
+	modelo				varchar(55),
+	tipo_combustible	varchar(55) not null,
+	kilometraje			int not null,
+	ubicacion_puerto	varchar(100) not null,
+);
 
+-- Combustibles --
+CREATE TABLE Combustibles(
+	 id_combustible	 int primary key,
+	 nombre			varchar(55) not null,
+	 precio			decimal(10,2) not null,
+);
 
- -- Combustibles --
-Create Table Combustibles();
+-- TanquesCombustible --
+CREATE TABLE TanquesCombustible(
+	id_tanque		int primary key,
+	id_combustible	int not null,
+	capacidad		int not null,
+	ubicacion		varchar(55),
+);
 
+-- IngresoDeCombustible (Factura) --
+CREATE TABLE IngresoDeCombustible(
+    id_ingresocombustible	int primary key,
+	id_dispensado			int not null,
 
- -- TanquesCombustible --
-Create Table TanquesCombustible();
+);
 
+--tabla proveedores, fecha de compra, usuario que realizo compra, otros datos...
+CREATE TABLE Proveedores(
 
- -- IngresoDeCombustible --
-Create Table IngresoDeCombustible();
+);
 
+-- Dispensadores --
+CREATE TABLE Dispensadores(
+    id_dispensadores	int primary key,
+	id_tanque			int not null,
+	ubicacion			varchar(55),
+);
 
- -- Dispensadores --
-Create Table Dispensadores();
+-- DispensandoDeCombustible --
+CREATE TABLE DispensandoDeCombustible(
+	id_dispesando		int primary key,
+	fecha_dispension	Date not null,
+	id_dispensador      int not null,
+	id_vehiculo         int not null,
+	id_usuario			int not null,
+);
 
+-- PartesDeEquipos (Partes remplazables?) --
+CREATE TABLE PartesDeEquipos(
+	
+);
 
- -- DispensandoDeCombustible --
-Create Table DispensandoDeCombustible();
+-- TiposDeMantenimientos --
+CREATE TABLE TiposDeMantenimientos(
+	id_mantenimiento	int primary key,
+	tipo				varchar(55) not null,
+	precio				decimal(10,2) not null,
+);
 
+-- AsignacionDeMantenimientos --
+CREATE TABLE AsignacionDeMantenimientos(
+	
+);
 
- -- PartesDeEquipos --
-Create Table PartesDeEquipos();
-
-
- -- TiposDeMantenimientos --
-Create Table TiposDeMantenimientos();
-
-
- -- AsignacionDeMantenimientos --
-Create Table AsignacionDeMantenimientos();
-
-
- -- BoletasDeMantenimientos --
-Create Table BoletasDeMantenimientos();
+-- BoletasDeMantenimientos --
+CREATE TABLE BoletasDeMantenimientos(
+    
+);
 
 
 ---------------------------------------------------------|
