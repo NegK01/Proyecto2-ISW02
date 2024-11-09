@@ -5,11 +5,6 @@
 package Capa_Logica;
 
 import Capa_Interfaz.Frm_Login;
-import com.formdev.flatlaf.FlatDarculaLaf;
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.themes.*;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
