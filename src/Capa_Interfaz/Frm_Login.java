@@ -5,9 +5,13 @@
 package Capa_Interfaz;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
+import java.awt.Insets;
 import java.awt.event.KeyEvent;
-import javax.swing.JButton;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +21,7 @@ public class Frm_Login extends javax.swing.JFrame {
 
     Frm_Principal prc;
 
-    public Frm_Login() {
+    public Frm_Login() throws URISyntaxException {
         this.prc = new Frm_Principal();
         initComponents();
         setSize(1080, 677);
@@ -27,12 +31,18 @@ public class Frm_Login extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
         txt_Usr.setOpaque(false);
         txt_Pwd.setOpaque(false);
-        jPanel1.setBackground(new Color(15, 15, 19,200));
-        jPanel2.setBackground(new Color(15, 15, 19,200));
-        jPanel3.setBackground(new Color(15, 15, 19,200));
+        jPanel1.setBackground(new Color(239, 239, 239));
+        jPanel2.setBackground(new Color(239, 239, 239));
+        jPanel3.setBackground(new Color(239, 239, 239));
         jPanel1.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
         jPanel2.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
         jPanel3.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
+//        jPanel4.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
+        jPanel1.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 50 ) );
+        jPanel2.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 10 ) );
+        jPanel3.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 10 ) );
+//        setBackground(new Color(0.1f, 0.1f, 0.1f, 0.1f));
+        
     }
 
     /**
@@ -56,30 +66,31 @@ public class Frm_Login extends javax.swing.JFrame {
         txt_Usr = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         txt_Pwd = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(15, 15, 19));
+        jPanel1.setBackground(new java.awt.Color(239, 239, 239));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Login to your account");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 250, 60));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Password");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Username");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
-        btn_Login.setBackground(new java.awt.Color(0, 51, 255));
+        btn_Login.setBackground(new java.awt.Color(0, 0, 0));
         btn_Login.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_Login.setForeground(new java.awt.Color(255, 255, 255));
         btn_Login.setText("Login now");
@@ -90,11 +101,13 @@ public class Frm_Login extends javax.swing.JFrame {
         });
         jPanel1.add(btn_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 390, 50));
 
+        jPanel2.setBackground(new java.awt.Color(215, 215, 215));
+        jPanel2.setForeground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_Usr.setBackground(new java.awt.Color(51, 51, 51));
+        txt_Usr.setBackground(new java.awt.Color(239, 239, 239));
         txt_Usr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_Usr.setForeground(new java.awt.Color(153, 153, 153));
+        txt_Usr.setForeground(new java.awt.Color(51, 51, 51));
         txt_Usr.setBorder(null);
         txt_Usr.setOpaque(true);
         txt_Usr.addActionListener(new java.awt.event.ActionListener() {
@@ -114,11 +127,13 @@ public class Frm_Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 390, 40));
 
+        jPanel3.setBackground(new java.awt.Color(215, 215, 215));
+        jPanel3.setForeground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_Pwd.setBackground(new java.awt.Color(51, 51, 51));
+        txt_Pwd.setBackground(new java.awt.Color(239, 239, 239));
         txt_Pwd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_Pwd.setForeground(new java.awt.Color(102, 102, 102));
+        txt_Pwd.setForeground(new java.awt.Color(51, 51, 51));
         txt_Pwd.setBorder(null);
         txt_Pwd.setOpaque(true);
         txt_Pwd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -133,12 +148,10 @@ public class Frm_Login extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 390, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 530, 360));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Pipa.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 540, 360));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_UsrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_UsrKeyPressed
@@ -175,6 +188,8 @@ public class Frm_Login extends javax.swing.JFrame {
 //        if (loginCorrecto) {
         prc.setLocationRelativeTo(null);
         prc.setVisible(true); // Mostramos el siguiente Frame si el Login fue correcto
+        prc.revalidate();
+        prc.repaint();
         setVisible(false);     // Y ocultamos la ventana actual
 //        } else {
 //            JOptionPane.showMessageDialog(null, "Ingrese las credenciales correctamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -216,14 +231,17 @@ public class Frm_Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Login().setVisible(true);
+                try {
+                    new Frm_Login().setVisible(true);
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(Frm_Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Login;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

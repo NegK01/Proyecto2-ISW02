@@ -1,4 +1,4 @@
-package Interfaz;
+package Capa_Interfaz;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

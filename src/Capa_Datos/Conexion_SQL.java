@@ -19,8 +19,8 @@ public class Conexion_SQL {
     public static Connection getConnection() throws SQLException {
         String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
-                + "user=sa;"
-                + "password=lol12345;" // -- Contraseña *personal*
+                + "user=sqlUser;"
+                + "password=pass;"
                 + "encrypt=true;trustServerCertificate=true;";
 
         try {
