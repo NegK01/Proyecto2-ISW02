@@ -11,15 +11,24 @@ Use TransportesIIIPatitos
 
 -- Usuarios --
 CREATE TABLE Usuarios(  
-    id_usuario	int primary key,
-	usuario		varchar(55) not null,
-	contraseña	varchar(55) not null,
-	rol			int not null, -- Considerar Tabla roles
+    id	        int primary key,
+	usuario		varchar(55) unique not null,
+	contrasena	varchar(256) not null,
+	rol			int not null,
+	estado      int not null,
 );
+
+INSERT INTO Usuarios (id, usuario, contrasena, rol, estado) VALUES
+(1, 'Admin', 'password', 1, 1),
+(2, 'Sarzzzo', '123', 2, 1),
+(3, 'Neg', '321', 2, 1);
+
+Select * from Usuarios
+SELECT contrasena, rol FROM Usuarios WHERE usuario = 'Neg'
 
 -- Vehiculos --
 CREATE TABLE Vehiculos(
-    id_vehiculo			int primary key,
+    id			        int primary key,
 	placa				varchar(20) unique not null,
 	modelo				varchar(55),
 	tipo_combustible	varchar(55) not null,
@@ -29,14 +38,14 @@ CREATE TABLE Vehiculos(
 
 -- Combustibles --
 CREATE TABLE Combustibles(
-	 id_combustible	 int primary key,
+	 id             int primary key,
 	 nombre			varchar(55) not null,
 	 precio			decimal(10,2) not null,
 );
 
 -- TanquesCombustible --
 CREATE TABLE TanquesCombustible(
-	id_tanque		int primary key,
+	id              int primary key,
 	id_combustible	int not null,
 	capacidad		int not null,
 	ubicacion		varchar(55),
@@ -44,9 +53,8 @@ CREATE TABLE TanquesCombustible(
 
 -- IngresoDeCombustible (Factura) --
 CREATE TABLE IngresoDeCombustible(
-    id_ingresocombustible	int primary key,
+    id                      int primary key,
 	id_dispensado			int not null,
-
 );
 
 --tabla proveedores, fecha de compra, usuario que realizo compra, otros datos...
@@ -56,14 +64,14 @@ CREATE TABLE Proveedores(
 
 -- Dispensadores --
 CREATE TABLE Dispensadores(
-    id_dispensadores	int primary key,
+    id	                int primary key,
 	id_tanque			int not null,
 	ubicacion			varchar(55),
 );
 
 -- DispensandoDeCombustible --
 CREATE TABLE DispensandoDeCombustible(
-	id_dispesando		int primary key,
+	id                  int primary key,
 	fecha_dispension	Date not null,
 	id_dispensador      int not null,
 	id_vehiculo         int not null,
@@ -77,7 +85,7 @@ CREATE TABLE PartesDeEquipos(
 
 -- TiposDeMantenimientos --
 CREATE TABLE TiposDeMantenimientos(
-	id_mantenimiento	int primary key,
+	id                  int primary key,
 	tipo				varchar(55) not null,
 	precio				decimal(10,2) not null,
 );
