@@ -4,14 +4,17 @@
  */
 package Capa_Interfaz;
 
+import Capa_Logica.Login;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +23,7 @@ import java.util.logging.Logger;
 public class Frm_Login extends javax.swing.JFrame {
 
     Frm_Principal prc;
+    Login login = new Login();
 
     public Frm_Login() throws URISyntaxException {
         this.prc = new Frm_Principal();
@@ -37,12 +41,10 @@ public class Frm_Login extends javax.swing.JFrame {
         jPanel1.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
         jPanel2.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
         jPanel3.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
-//        jPanel4.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
-        jPanel1.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 50 ) );
-        jPanel2.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 10 ) );
-        jPanel3.setBorder( new FlatLineBorder( new Insets( 16, 16, 16, 16 ), Color.BLACK, 1, 10 ) );
-//        setBackground(new Color(0.1f, 0.1f, 0.1f, 0.1f));
-        
+        jPanel1.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 50));
+        jPanel2.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 10));
+        jPanel3.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 10));
+
     }
 
     /**
@@ -68,7 +70,6 @@ public class Frm_Login extends javax.swing.JFrame {
         txt_Pwd = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,19 +183,23 @@ public class Frm_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_PwdKeyTyped
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
-//        String username = txt_Usr.getText();
-//        String password = new String(txt_Pwd.getPassword());
-//        boolean loginCorrecto = Login.IniciarSesion(username, password);
-//        if (loginCorrecto) {
-        prc.setLocationRelativeTo(null);
-        prc.setVisible(true); // Mostramos el siguiente Frame si el Login fue correcto
-        prc.revalidate();
-        prc.repaint();
-        setVisible(false);     // Y ocultamos la ventana actual
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Ingrese las credenciales correctamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
+        try {
+            String username = txt_Usr.getText();
+            String password = new String(txt_Pwd.getPassword());
+            boolean loginCorrecto = login.ValidarLogin(username, password);
 
+            if (loginCorrecto) {
+                prc.setLocationRelativeTo(null);
+                prc.setVisible(true); // Mostramos el siguiente Frame
+                prc.revalidate();
+                prc.repaint();
+                setVisible(false);  // Ocultamos la ventana actual
+            } else {
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese las credenciales correctamente.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     private void txt_UsrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UsrActionPerformed

@@ -14,41 +14,80 @@ package Capa_Datos;
 public class Obj_User {
 
     // -- Variables ->
-    String     Usuario;
-    String  Contraseña;
-    String         Rol;
+    int          id;
+    String     usuario;
+    String  contrasena;
+    int         rol;
+    int      estado;
     
-    // -- Constructor ->
-    public Obj_User(String Usuario, String Contraseña, String Rol) {
-        this.Usuario = Usuario;
-        this.Contraseña = Contraseña;
-        this.Rol = Rol;
+    // -- Constructores ->
+    public Obj_User(int id, String usuario, String contrasena, int rol, int estado) {
+        this.id = id;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.rol = rol;
+        this.estado = estado;
+    }
+
+    public Obj_User(int id, String usuario, String contrasena, int rol) {
+        this.id = id;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.rol = rol;
+    }
+
+    public Obj_User(int id, String usuario, String contrasena) {
+        this.id = id;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
+
+    public Obj_User(String usuario, String contrasena) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
+
+    public Obj_User() {
     }
     
     // -- Getters Y Setters ->
-
-    public String getUsuario() {
-        return Usuario;
+    public int getId() {
+        return id;
     }
 
-    public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getNombre() {
+        return usuario;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+    public void setNombre(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getRol() {
-        return Rol;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setRol(String Rol) {
-        this.Rol = Rol;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
-    
+
+    public int getRol() {
+        return rol;
+    }
+
+    public void setRol(int rol) {
+        this.rol = rol;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 }

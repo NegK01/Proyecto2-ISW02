@@ -21,13 +21,13 @@ public class AnimacionPnl {
             Animacion.Animacion.mover_izquierda(pnl.getX(), -pnl.getWidth(), 10, 12, pnl);
             Animacion.Animacion.mover_izquierda(btn.getX(), 0, 10, 12, btn);
             Animacion.Animacion.mover_izquierda(contenedor.getX(), 100, 10, 12, contenedor);
-            btn.setIcon(new FlatSVGIcon("Imagenes/Expand2.svg"));
+            btn.setIcon(new FlatSVGIcon("Imagenes/Expand.svg"));
         } 
         else{
             Animacion.Animacion.mover_derecha(pnl.getX(), 0, 10, 12, pnl);
             Animacion.Animacion.mover_derecha(btn.getX(), pnl.getWidth(), 10, 12, btn);
             Animacion.Animacion.mover_derecha(contenedor.getX(), pnl.getWidth(), 10, 12, contenedor);
-            btn.setIcon(new FlatSVGIcon("Imagenes/Expand.svg"));
+            btn.setIcon(new FlatSVGIcon("Imagenes/Expand2.svg"));
         }
         
         

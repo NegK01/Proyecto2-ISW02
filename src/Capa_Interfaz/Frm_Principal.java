@@ -74,6 +74,8 @@ import java.util.logging.Logger;
         panelRound3 = new Capa_Interfaz.PanelRound();
         jButton15 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         panelRound4 = new Capa_Interfaz.PanelRound();
         panelRound5 = new Capa_Interfaz.PanelRound();
         jButton14 = new javax.swing.JButton();
@@ -88,13 +90,6 @@ import java.util.logging.Logger;
         jButton24 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         panelRound1 = new Capa_Interfaz.PanelRound();
-        jLabel2 = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
-        dateChooserPanel1 = new datechooser.beans.DateChooserPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jSlider1 = new javax.swing.JSlider();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -127,6 +122,22 @@ import java.util.logging.Logger;
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setIcon(new FlatSVGIcon("Imagenes/3PatitosSA.svg"));
         panelRound3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+
+        jButton2.setText("Ser admin");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panelRound3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 170, 30));
+
+        jButton1.setText("Dejar admin");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelRound3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 170, 30));
 
         getContentPane().add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 51));
 
@@ -228,6 +239,7 @@ import java.util.logging.Logger;
         panelRound4.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 620));
 
         jButton13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jButton13.setIcon(new FlatSVGIcon("Imagenes/Expand2.svg"));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -236,36 +248,7 @@ import java.util.logging.Logger;
         panelRound4.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 30, 30));
 
         panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Dezplazamiento de componentes");
-        panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 250, -1));
-
-        jButton16.setText("Dezplazamiento de componentes");
-        panelRound1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 250, -1));
-        panelRound1.add(dateChooserPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
-        panelRound1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, 90));
-        panelRound1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
-
-        jButton1.setText("Dejar admin");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        panelRound1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 170, 70));
-
-        jButton2.setText("Ser admin");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        panelRound1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 170, 70));
-
-        panelRound4.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 930, 440));
+        panelRound4.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 930, 620));
 
         getContentPane().add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1180, 620));
 
@@ -392,12 +375,10 @@ import java.util.logging.Logger;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pnl_Administrador;
-    private datechooser.beans.DateChooserPanel dateChooserPanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
@@ -408,9 +389,6 @@ import java.util.logging.Logger;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSlider jSlider1;
     private Capa_Interfaz.PanelRound panelRound1;
     private Capa_Interfaz.PanelRound panelRound3;
     private Capa_Interfaz.PanelRound panelRound4;
