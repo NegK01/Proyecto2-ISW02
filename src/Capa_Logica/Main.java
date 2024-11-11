@@ -33,8 +33,7 @@ public class Main {
         }
         
         Frm_Login Ver = new Frm_Login();
-        Ver.setLocationRelativeTo(null); 
-
+        Ver.setLocationRelativeTo(null);
         Ver.setVisible(true);
     }
     

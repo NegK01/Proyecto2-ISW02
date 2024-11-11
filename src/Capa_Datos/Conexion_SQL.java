@@ -9,11 +9,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Usuario & Mao
  */
 public class Conexion_SQL {
 
@@ -28,8 +27,7 @@ public class Conexion_SQL {
             Connection con = DriverManager.getConnection(CadenaConexion);
             return con;
         } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, e.toString());
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
             return null;
         }
     }

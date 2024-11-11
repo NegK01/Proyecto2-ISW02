@@ -5,62 +5,31 @@
 package Capa_Interfaz;
 
 import Capa_Logica.AnimacionPnl;
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.Color;
-import java.awt.Toolkit;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
-    * @author Usuario & Mao
-    */
-   public class Frm_Principal extends javax.swing.JFrame {
+ * @author Usuario & Mao
+ */
+public class Frm_Principal extends javax.swing.JFrame {
 
-       /**
-        * Creates new form Frm_Principal
-        */
-       private final Color transparente = new Color(0,0,0, 0); // Utilizamos esta combinacion para poner un fondo transparente
-       private final Color seleccionado = new Color(17, 114, 255, 50); // Color que tendra un boton al momento de ser seleciconado
-       AnimacionPnl anima = new AnimacionPnl();
-       private int mouseX, mouseY; // Corrupcion entre cambios de resolucion
+    /**
+     * Creates new form Frm_Principal
+     */
+    private final Color transparente = new Color(0, 0, 0, 0);
+    private final Color seleccionado = new Color(17, 114, 255, 50);
+    private final AnimacionPnl anima = new AnimacionPnl();
+    private int mouseX, mouseY; // Corrupcion entre cambios de resolucion
+    private Frm_Login login;
 
-       public Frm_Principal() {
-           initComponents();
-           setBackground(new Color(0.1f, 0.1f, 0.1f, 0.1f)); // Corrupcion entre cambios de resolucion
-           setSize(1195, 685); //1080, 642
-
-//           jButton1.setBackground(transparente);
-//           jButton1.setForeground(Color.WHITE);
-           jButton14.setBackground(transparente);
-           jButton13.setBackground(transparente);
-           jButton17.setBackground(new Color(0,0,0));
-           
-          panelRound3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                mouseX = evt.getX();
-                mouseY = evt.getY();
-            }
-        });
-
-        panelRound3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                // Mover la ventana
-                int x = evt.getXOnScreen() - mouseX;
-                int y = evt.getYOnScreen() - mouseY;
-                setLocation(x, y);
-            }
-        });
-
-
-//           
-           
-   //        jPanel1.setBorder( new FlatLineBorder( new Insets( 50, 50, 50, 0 ), Color.BLACK, 0, 10 ) );
-           
-
-       }
+    public Frm_Principal() {
+        initComponents();
+        setSize(1195, 685); //1080, 642
+        setResizable(false);
+        setBackground(new Color(0.1f, 0.1f, 0.1f, 0.1f)); // Corrupcion entre cambios de resolucion
+        Listeners();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,269 +40,166 @@ import java.util.logging.Logger;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound3 = new Capa_Interfaz.PanelRound();
-        jButton15 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        panelRound4 = new Capa_Interfaz.PanelRound();
-        panelRound5 = new Capa_Interfaz.PanelRound();
-        jButton14 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
+        Pnl_BarraDeTitulo = new Capa_Interfaz.PanelRound();
+        Btn_Cerrar = new javax.swing.JButton();
+        Lbl_IIIPatitos = new javax.swing.JLabel();
+        Pnl_AreaDeTrabajo = new Capa_Interfaz.PanelRound();
+        Pnl_Menu = new Capa_Interfaz.PanelRound();
+        Btn_Dashboard = new javax.swing.JButton();
+        Btn_CerrarSesion = new javax.swing.JButton();
+        Btn_PartesDeEquipo = new javax.swing.JButton();
+        Btn_Combustibles = new javax.swing.JButton();
+        Btn_Tanques = new javax.swing.JButton();
+        Btn_Dispensadores = new javax.swing.JButton();
+        Btn_Mantenimiento = new javax.swing.JButton();
         Pnl_Administrador = new javax.swing.JPanel();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        panelRound1 = new Capa_Interfaz.PanelRound();
+        Btn_Vehiculos = new javax.swing.JButton();
+        Btn_Usuarios = new javax.swing.JButton();
+        Btn_ExpandirMenu = new javax.swing.JButton();
+        Pnl_Contenedor = new Capa_Interfaz.PanelRound();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowStateListener(new java.awt.event.WindowStateListener() {
-            public void windowStateChanged(java.awt.event.WindowEvent evt) {
-                formWindowStateChanged(evt);
-            }
-        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelRound3.setBackground(new java.awt.Color(0, 0, 0));
-        panelRound3.setRoundTopLeft(20);
-        panelRound3.setRoundTopRight(20);
-        panelRound3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Pnl_BarraDeTitulo.setBackground(new java.awt.Color(0, 0, 0));
+        Pnl_BarraDeTitulo.setRoundTopLeft(20);
+        Pnl_BarraDeTitulo.setRoundTopRight(20);
+        Pnl_BarraDeTitulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton15.setBackground(new java.awt.Color(0, 0, 0));
-        jButton15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("x");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Cerrar.setBackground(new java.awt.Color(0, 0, 0));
+        Btn_Cerrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Btn_Cerrar.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_Cerrar.setText("x");
+        Btn_Cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                Btn_CerrarActionPerformed(evt);
             }
         });
-        panelRound3.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 40, 50));
+        Pnl_BarraDeTitulo.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 40, 50));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new FlatSVGIcon("Imagenes/3PatitosSA.svg"));
-        panelRound3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+        Lbl_IIIPatitos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Lbl_IIIPatitos.setForeground(new java.awt.Color(204, 204, 204));
+        Lbl_IIIPatitos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lbl_IIIPatitos.setIcon(new FlatSVGIcon("Imagenes/3PatitosSA.svg"));
+        Pnl_BarraDeTitulo.add(Lbl_IIIPatitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
 
-        jButton2.setText("Ser admin");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(Pnl_BarraDeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 51));
+
+        Pnl_AreaDeTrabajo.setRoundBottomLeft(20);
+        Pnl_AreaDeTrabajo.setRoundBottomRight(20);
+        Pnl_AreaDeTrabajo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Pnl_Menu.setBackground(new java.awt.Color(0, 0, 0));
+        Pnl_Menu.setRoundBottomLeft(20);
+        Pnl_Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Btn_Dashboard.setIcon(new FlatSVGIcon("Imagenes/Button.svg"));
+        Btn_Dashboard.setFocusPainted(false);
+        Pnl_Menu.add(Btn_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 240, 50));
+
+        Btn_CerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
+        Btn_CerrarSesion.setBackground(new java.awt.Color(0, 0, 0));
+        Btn_CerrarSesion.setIcon(new FlatSVGIcon("Imagenes/Btn_CerrarSesion.svg"));
+        Btn_CerrarSesion.setFocusPainted(false);
+        Btn_CerrarSesion.setOpaque(false);
+        Btn_CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Btn_CerrarSesionActionPerformed(evt);
             }
         });
-        panelRound3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 170, 30));
+        Pnl_Menu.add(Btn_CerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 240, 50));
 
-        jButton1.setText("Dejar admin");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        panelRound3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 170, 30));
+        Btn_PartesDeEquipo.setIcon(new FlatSVGIcon("Imagenes/Btn_PartesDeEquipo.svg"));
+        Btn_PartesDeEquipo.setFocusPainted(false);
+        Pnl_Menu.add(Btn_PartesDeEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 50));
 
-        getContentPane().add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 51));
+        Btn_Combustibles.setIcon(new FlatSVGIcon("Imagenes/Btn_Combustibles.svg"));
+        Btn_Combustibles.setFocusPainted(false);
+        Pnl_Menu.add(Btn_Combustibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 50));
 
-        panelRound4.setRoundBottomLeft(20);
-        panelRound4.setRoundBottomRight(20);
-        panelRound4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Btn_Tanques.setIcon(new FlatSVGIcon("Imagenes/Btn_Tanques.svg"));
+        Btn_Tanques.setFocusPainted(false);
+        Pnl_Menu.add(Btn_Tanques, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 240, 50));
 
-        panelRound5.setBackground(new java.awt.Color(0, 0, 0));
-        panelRound5.setRoundBottomLeft(20);
-        panelRound5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Btn_Dispensadores.setIcon(new FlatSVGIcon("Imagenes/Btn_Dispensadores.svg"));
+        Btn_Dispensadores.setFocusPainted(false);
+        Pnl_Menu.add(Btn_Dispensadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 240, 50));
 
-        jButton14.setIcon(new FlatSVGIcon("Imagenes/Button.svg"));
-        jButton14.setFocusPainted(false);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 240, 50));
-
-        jButton17.setForeground(new java.awt.Color(0, 0, 0));
-        jButton17.setIcon(new FlatSVGIcon("Imagenes/Btn_CerrarSesion.svg"));
-        jButton17.setFocusPainted(false);
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 240, 50));
-
-        jButton18.setIcon(new FlatSVGIcon("Imagenes/Btn_PartesDeEquipo.svg"));
-        jButton18.setFocusPainted(false);
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 50));
-
-        jButton19.setIcon(new FlatSVGIcon("Imagenes/Btn_Combustibles.svg"));
-        jButton19.setFocusPainted(false);
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 50));
-
-        jButton20.setIcon(new FlatSVGIcon("Imagenes/Btn_Tanques.svg"));
-        jButton20.setFocusPainted(false);
-        jButton20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton20ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 240, 50));
-
-        jButton21.setIcon(new FlatSVGIcon("Imagenes/Btn_Dispensadores.svg"));
-        jButton21.setFocusPainted(false);
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 240, 50));
-
-        jButton22.setIcon(new FlatSVGIcon("Imagenes/Btn_Mantenimiento.svg"));
-        jButton22.setFocusPainted(false);
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-        panelRound5.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 240, 50));
+        Btn_Mantenimiento.setIcon(new FlatSVGIcon("Imagenes/Btn_Mantenimiento.svg"));
+        Btn_Mantenimiento.setFocusPainted(false);
+        Pnl_Menu.add(Btn_Mantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 240, 50));
 
         Pnl_Administrador.setBackground(new java.awt.Color(0, 0, 0));
         Pnl_Administrador.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton23.setIcon(new FlatSVGIcon("Imagenes/Btn_Vehiculos.svg"));
-        jButton23.setFocusPainted(false);
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Vehiculos.setIcon(new FlatSVGIcon("Imagenes/Btn_Vehiculos.svg"));
+        Btn_Vehiculos.setFocusPainted(false);
+        Pnl_Administrador.add(Btn_Vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
+
+        Btn_Usuarios.setIcon(new FlatSVGIcon("Imagenes/Btn_Usuarios.svg"));
+        Btn_Usuarios.setFocusPainted(false);
+        Pnl_Administrador.add(Btn_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 240, 50));
+
+        Pnl_Menu.add(Pnl_Administrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 240));
+
+        Pnl_AreaDeTrabajo.add(Pnl_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 620));
+
+        Btn_ExpandirMenu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        Btn_ExpandirMenu.setIcon(new FlatSVGIcon("Imagenes/Expand2.svg"));
+        Btn_ExpandirMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                Btn_ExpandirMenuActionPerformed(evt);
             }
         });
-        Pnl_Administrador.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
+        Pnl_AreaDeTrabajo.add(Btn_ExpandirMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 30, 30));
 
-        jButton24.setIcon(new FlatSVGIcon("Imagenes/Btn_Usuarios.svg"));
-        jButton24.setFocusPainted(false);
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
-            }
-        });
-        Pnl_Administrador.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 240, 50));
+        Pnl_Contenedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Pnl_AreaDeTrabajo.add(Pnl_Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 930, 620));
 
-        panelRound5.add(Pnl_Administrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 240));
-
-        panelRound4.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 620));
-
-        jButton13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jButton13.setIcon(new FlatSVGIcon("Imagenes/Expand2.svg"));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        panelRound4.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 30, 30));
-
-        panelRound1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        panelRound4.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 930, 620));
-
-        getContentPane().add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1180, 620));
+        getContentPane().add(Pnl_AreaDeTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1180, 620));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        
-        
-        
-        anima.animarPanel(panelRound5, jButton13, panelRound1);
-        
-        
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
-
-    }//GEN-LAST:event_formWindowStateChanged
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-         //        try {
-            Frm_Login login = null;
-            try {
-                login = new Frm_Login();
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(Frm_Principal.class.getName()).log(Level.SEVERE, null, ex);
+    // Metodos listeners que permiten el desplazamiento de la ventana mediante el cursor
+    private void Listeners() {
+        Pnl_BarraDeTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mouseX = evt.getX();
+                mouseY = evt.getY();
             }
-            login.setVisible(true);
-            login.setLocationRelativeTo(null);
-            setVisible(false);
-            repaint();
-            revalidate();
-            //        } catch (SQLException ex) {
-            //            Logger.getLogger(JF_Principal.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
-    }//GEN-LAST:event_jButton17ActionPerformed
+        });
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+        Pnl_BarraDeTitulo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                // Mover la ventana
+                int x = evt.getXOnScreen() - mouseX;
+                int y = evt.getYOnScreen() - mouseY;
+                setLocation(x, y);
+            }
+        });
+    }
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
+    // Metodo que expande o encoge el panel del menu y el contenedor
+    private void Btn_ExpandirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ExpandirMenuActionPerformed
+        anima.animarPanel(Pnl_Menu, Btn_ExpandirMenu, Pnl_Contenedor);
+    }//GEN-LAST:event_Btn_ExpandirMenuActionPerformed
 
-    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton20ActionPerformed
+    // Metodo para salir del programa
+    private void Btn_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_Btn_CerrarActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton21ActionPerformed
+    // Metodo para cerrar sesion
+    private void Btn_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CerrarSesionActionPerformed
+        login = new Frm_Login();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Btn_CerrarSesionActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
-
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
-
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Pnl_Administrador.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Pnl_Administrador.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -364,34 +230,28 @@ import java.util.logging.Logger;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Frm_Principal().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(Frm_Principal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new Frm_Principal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_Cerrar;
+    private javax.swing.JButton Btn_CerrarSesion;
+    private javax.swing.JButton Btn_Combustibles;
+    private javax.swing.JButton Btn_Dashboard;
+    private javax.swing.JButton Btn_Dispensadores;
+    private javax.swing.JButton Btn_ExpandirMenu;
+    private javax.swing.JButton Btn_Mantenimiento;
+    private javax.swing.JButton Btn_PartesDeEquipo;
+    private javax.swing.JButton Btn_Tanques;
+    private javax.swing.JButton Btn_Usuarios;
+    private javax.swing.JButton Btn_Vehiculos;
+    private javax.swing.JLabel Lbl_IIIPatitos;
     private javax.swing.JPanel Pnl_Administrador;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JLabel jLabel1;
-    private Capa_Interfaz.PanelRound panelRound1;
-    private Capa_Interfaz.PanelRound panelRound3;
-    private Capa_Interfaz.PanelRound panelRound4;
-    private Capa_Interfaz.PanelRound panelRound5;
+    private Capa_Interfaz.PanelRound Pnl_AreaDeTrabajo;
+    private Capa_Interfaz.PanelRound Pnl_BarraDeTitulo;
+    private Capa_Interfaz.PanelRound Pnl_Contenedor;
+    private Capa_Interfaz.PanelRound Pnl_Menu;
     // End of variables declaration//GEN-END:variables
 }

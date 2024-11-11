@@ -36,12 +36,6 @@ public class Obj_User {
         this.rol = rol;
     }
 
-    public Obj_User(int id, String usuario, String contrasena) {
-        this.id = id;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-    }
-
     public Obj_User(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
