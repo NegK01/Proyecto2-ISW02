@@ -14,11 +14,11 @@ package Capa_Datos;
 public class Obj_User {
 
     // -- Variables ->
-    int          id;
-    String     usuario;
-    String  contrasena;
-    int         rol;
-    int      estado;
+    private int          id;
+    private String     usuario;
+    private String  contrasena;
+    private int         rol;
+    private int      estado;
     
     // -- Constructores ->
     public Obj_User(int id, String usuario, String contrasena, int rol, int estado) {

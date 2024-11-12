@@ -4,7 +4,6 @@
  */
 package Capa_Logica;
 
-import Capa_Interfaz.PanelRound;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;

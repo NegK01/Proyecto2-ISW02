@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver://192.168.0.6:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
                 + "user=sqlUser;"
                 + "password=pass;"
@@ -32,18 +32,55 @@ public class Conexion_SQL {
         }
     }
 
+    // INSERTS
+    public static int Insert_AsignaMantenimiento(Obj_AsignacionMantenimiento obj, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + obj.getId() + ","
+                   + " " + obj.getId_vehiculo() + ","
+                   + " " + obj.getId_mantenimiento() + ","
+                   + " '" + obj.getFecha_asignacion() + "',"
+                   + " " + obj.getId_usuario() + ")";
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+
+    // -- Inserta la info del Equipo al table Equipos  
+    public static int InsertCombustible(Obj_Combustible Com, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + Com.id + ", "
+                   + "'" + Com.nombre + "', "
+                   + "" + Com.precio + ", "
+                   + "" + Com.activo + ")";
+
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+
+    // CONSULTAS
     // Con esta funcion validamos el inicio de sesion del usuario y obtenemos su rol
     public static int ValidarLoginSQL(Obj_User obj) throws SQLException {
         int resultado = 0;
 
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
-            String qry = "SELECT contrasena, rol FROM Usuarios WHERE usuario = '" + obj.usuario + "'";
+            String qry = "SELECT contrasena, rol FROM Usuarios WHERE usuario = '" + obj.getNombre() + "'";
 
             ResultSet res = sql.executeQuery(qry);
             while (res.next()) {
                 String passwordAlmacenado = res.getString("contrasena");
-                if (passwordAlmacenado.equals(obj.contrasena)) {
+                if (passwordAlmacenado.equals(obj.getContrasena())) {
                     resultado = res.getInt("rol");
                 }
             }
@@ -52,24 +89,60 @@ public class Conexion_SQL {
         }
         return resultado;
     }
-    
-//    public static int SiguienteIdSQL(Obj_User obj) throws SQLException {
-//        int resultado = 0;
-//
-//        try {
-//            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
-//            String qry = "SELECT id FROM Usuarios WHERE usuario = " + 1;
-//
-//            ResultSet res = sql.executeQuery(qry);
-//            while (res.next()) {
-//                String passwordAlmacenado = res.getString("id");
-//                if (passwordAlmacenado.equals(obj.contrasena)) {
-//                    resultado = res.getInt("rol");
-//                }
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
-//        }
-//        return resultado;
-//    }
+
+    public static int Sig_IdSQL(String tabla) throws SQLException {
+        int Resultado = 1;
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "Select Max(id) From " + tabla;
+
+            ResultSet Opr = sql.executeQuery(Consulta);
+            while (Opr.next()) {
+                Resultado = Opr.getInt(1) + 1;
+                System.out.println("\u001B[32mID ACTUAL:\u001B[0m " + Resultado);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+        }
+
+        return Resultado;
+    }
+
+    public static ResultSet consulta_Combustibles(String tabla) throws SQLException {
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "Select * "
+                    + "From " + tabla;
+
+            ResultSet resultado = sql.executeQuery(Consulta);
+
+            return resultado;
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+            return null;
+        }
+    }
+
+    // UPDATES
+    // -- Modifica la info del Equipo al table Equipos  
+    public static int UpdateCombustible(Obj_Combustible Com, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set nombre = '" + Com.nombre + "',"
+                   + "precio = " + Com.precio + ","
+                   + "activo = " + Com.activo + " "
+                   + "Where id = " + Com.id;
+        //
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+
 }

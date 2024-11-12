@@ -19,11 +19,6 @@ public class Login {
     public boolean ValidarLogin(String usuario, String contrasena) throws SQLException {
         obj_user = new Obj_User(usuario, contrasena);
         int rol = Conexion_SQL.ValidarLoginSQL(obj_user);
-        return (rol != 0); // 1-2 True / 0 False 
+        return (rol != 0); // 1-2 True / 0 False
     }
-
-//    public int SiguienteId (String usuario) throws SQLException {
-//        int rol = Conexion_SQL.SiguienteIdSQL(usuario);
-//        return (rol != 0);
-//    }
 }

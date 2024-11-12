@@ -79,11 +79,12 @@ public class Frm_Principal extends javax.swing.JFrame {
         });
         Pnl_BarraDeTitulo.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 40, 50));
 
+        Lbl_IIIPatitos.setBackground(new java.awt.Color(0, 51, 51));
         Lbl_IIIPatitos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Lbl_IIIPatitos.setForeground(new java.awt.Color(204, 204, 204));
-        Lbl_IIIPatitos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_IIIPatitos.setIcon(new FlatSVGIcon("Imagenes/3PatitosSA.svg"));
-        Pnl_BarraDeTitulo.add(Lbl_IIIPatitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+        Lbl_IIIPatitos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lbl_IIIPatitos.setIcon(new FlatSVGIcon("Imagenes/Logo.svg"));
+        Pnl_BarraDeTitulo.add(Lbl_IIIPatitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
 
         getContentPane().add(Pnl_BarraDeTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 51));
 
@@ -103,7 +104,6 @@ public class Frm_Principal extends javax.swing.JFrame {
         Btn_CerrarSesion.setBackground(new java.awt.Color(0, 0, 0));
         Btn_CerrarSesion.setIcon(new FlatSVGIcon("Imagenes/Btn_CerrarSesion.svg"));
         Btn_CerrarSesion.setFocusPainted(false);
-        Btn_CerrarSesion.setOpaque(false);
         Btn_CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_CerrarSesionActionPerformed(evt);
@@ -113,10 +113,20 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_PartesDeEquipo.setIcon(new FlatSVGIcon("Imagenes/Btn_PartesDeEquipo.svg"));
         Btn_PartesDeEquipo.setFocusPainted(false);
+        Btn_PartesDeEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_PartesDeEquipoActionPerformed(evt);
+            }
+        });
         Pnl_Menu.add(Btn_PartesDeEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 50));
 
         Btn_Combustibles.setIcon(new FlatSVGIcon("Imagenes/Btn_Combustibles.svg"));
         Btn_Combustibles.setFocusPainted(false);
+        Btn_Combustibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_CombustiblesActionPerformed(evt);
+            }
+        });
         Pnl_Menu.add(Btn_Combustibles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 50));
 
         Btn_Tanques.setIcon(new FlatSVGIcon("Imagenes/Btn_Tanques.svg"));
@@ -136,7 +146,12 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_Vehiculos.setIcon(new FlatSVGIcon("Imagenes/Btn_Vehiculos.svg"));
         Btn_Vehiculos.setFocusPainted(false);
-        Pnl_Administrador.add(Btn_Vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
+        Btn_Vehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_VehiculosActionPerformed(evt);
+            }
+        });
+        Pnl_Administrador.add(Btn_Vehiculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 240, 50));
 
         Btn_Usuarios.setIcon(new FlatSVGIcon("Imagenes/Btn_Usuarios.svg"));
         Btn_Usuarios.setFocusPainted(false);
@@ -155,8 +170,8 @@ public class Frm_Principal extends javax.swing.JFrame {
         });
         Pnl_AreaDeTrabajo.add(Btn_ExpandirMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 30, 30));
 
-        Pnl_Contenedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Pnl_AreaDeTrabajo.add(Pnl_Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 930, 620));
+        Pnl_Contenedor.setLayout(new java.awt.BorderLayout());
+        Pnl_AreaDeTrabajo.add(Pnl_Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 940, 620));
 
         getContentPane().add(Pnl_AreaDeTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1180, 620));
 
@@ -199,6 +214,29 @@ public class Frm_Principal extends javax.swing.JFrame {
         login.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_Btn_CerrarSesionActionPerformed
+
+    private void Btn_VehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_VehiculosActionPerformed
+         
+    }//GEN-LAST:event_Btn_VehiculosActionPerformed
+
+    private void Btn_PartesDeEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PartesDeEquipoActionPerformed
+        Pnl_Mantenimiento Comp = new Pnl_Mantenimiento();
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate(); 
+        Pnl_Contenedor.repaint(); 
+    }//GEN-LAST:event_Btn_PartesDeEquipoActionPerformed
+
+    private void Btn_CombustiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CombustiblesActionPerformed
+        Pnl_Combustibles Comp = new Pnl_Combustibles();
+        Comp.setSize(930, 620);
+        Comp.setLocation(0, 0);
+
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate();
+        Pnl_Contenedor.repaint();
+    }//GEN-LAST:event_Btn_CombustiblesActionPerformed
 
     /**
      * @param args the command line arguments
