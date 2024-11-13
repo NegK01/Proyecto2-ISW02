@@ -25,12 +25,11 @@ public class Combustible {
     }
     
     public int Update_Combustible(int id, String nombre, String precio, int activo) throws SQLException {
-//        int id = Sql.Sig_Id(tabla);
         obj_Combustible = new Obj_Combustible(id, nombre, precio, activo);
         return Conexion_SQL.UpdateCombustible(obj_Combustible, tabla);
     }
  
     public ResultSet Consultar_Combustible() throws SQLException {
-        return Conexion_SQL.consulta_Combustibles(tabla);
+        return Conexion_SQL.consultar_Tabla(tabla);
     }
 }

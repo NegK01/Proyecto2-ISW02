@@ -12,7 +12,7 @@ import java.awt.Color;
  *
  * @author Usuario & Mao
  */
-public class Frm_Principal extends javax.swing.JFrame {
+public class Frm_Principal extends javax.swing.JFrame { 
 
     /**
      * Creates new form Frm_Principal
@@ -21,7 +21,6 @@ public class Frm_Principal extends javax.swing.JFrame {
     private final Color seleccionado = new Color(17, 114, 255, 50);
     private final AnimacionPnl anima = new AnimacionPnl();
     private int mouseX, mouseY; // Corrupcion entre cambios de resolucion
-    private Frm_Login login;
 
     public Frm_Principal() {
         initComponents();
@@ -139,6 +138,11 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_Mantenimiento.setIcon(new FlatSVGIcon("Imagenes/Btn_Mantenimiento.svg"));
         Btn_Mantenimiento.setFocusPainted(false);
+        Btn_Mantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_MantenimientoActionPerformed(evt);
+            }
+        });
         Pnl_Menu.add(Btn_Mantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 240, 50));
 
         Pnl_Administrador.setBackground(new java.awt.Color(0, 0, 0));
@@ -209,7 +213,7 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     // Metodo para cerrar sesion
     private void Btn_CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CerrarSesionActionPerformed
-        login = new Frm_Login();
+        Frm_Login login = new Frm_Login();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
         setVisible(false);
@@ -220,11 +224,11 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_VehiculosActionPerformed
 
     private void Btn_PartesDeEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PartesDeEquipoActionPerformed
-        Pnl_Mantenimiento Comp = new Pnl_Mantenimiento();
+        Pnl_Equipo Comp = new Pnl_Equipo();
         Pnl_Contenedor.removeAll();
         Pnl_Contenedor.add(Comp);
-        Pnl_Contenedor.revalidate(); 
-        Pnl_Contenedor.repaint(); 
+        Pnl_Contenedor.revalidate();
+        Pnl_Contenedor.repaint();
     }//GEN-LAST:event_Btn_PartesDeEquipoActionPerformed
 
     private void Btn_CombustiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CombustiblesActionPerformed
@@ -237,6 +241,14 @@ public class Frm_Principal extends javax.swing.JFrame {
         Pnl_Contenedor.revalidate();
         Pnl_Contenedor.repaint();
     }//GEN-LAST:event_Btn_CombustiblesActionPerformed
+
+    private void Btn_MantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_MantenimientoActionPerformed
+        Pnl_Mantenimiento Comp = new Pnl_Mantenimiento();
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate(); 
+        Pnl_Contenedor.repaint(); 
+    }//GEN-LAST:event_Btn_MantenimientoActionPerformed
 
     /**
      * @param args the command line arguments

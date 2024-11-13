@@ -33,6 +33,38 @@ public class Conexion_SQL {
     }
 
     // INSERTS
+    public static int Insert_TiposMantenimiento(Obj_TipoMantenimiento obj, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + obj.getId() + ","
+                   + " '" + obj.getDescripcion()+ "',"
+                   + " " + obj.getPrecio()+ ","
+                   + " " + obj.getActivo() + ")";
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Insert_Equipo(Obj_Equipos obj, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + obj.getId() + ","
+                   + " '" + obj.getDescripcion()+ "',"
+                   + " " + obj.getPrecio()+ ","
+                   + " " + obj.getActivo() + ")";
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
     public static int Insert_AsignaMantenimiento(Obj_AsignacionMantenimiento obj, String tabla) throws SQLException {
 
         int Rows_Affected = 0;
@@ -44,7 +76,8 @@ public class Conexion_SQL {
                    + " " + obj.getId_vehiculo() + ","
                    + " " + obj.getId_mantenimiento() + ","
                    + " '" + obj.getFecha_asignacion() + "',"
-                   + " " + obj.getId_usuario() + ")";
+                   + " " + obj.getId_usuario() + ","
+                   + " " + obj.getActivo() + ")";
         Rows_Affected = sql.executeUpdate(Qry);
 
         return Rows_Affected;
@@ -110,7 +143,7 @@ public class Conexion_SQL {
         return Resultado;
     }
 
-    public static ResultSet consulta_Combustibles(String tabla) throws SQLException {
+    public static ResultSet consultar_Tabla(String tabla) throws SQLException {
 
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
@@ -139,7 +172,57 @@ public class Conexion_SQL {
                    + "precio = " + Com.precio + ","
                    + "activo = " + Com.activo + " "
                    + "Where id = " + Com.id;
-        //
+        
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Update_AsignaMantenimiento(Obj_AsignacionMantenimiento obj, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set id_vehiculo = " + obj.getId_vehiculo() + ", "
+                   + "id_mantenimiento = " + obj.getId_mantenimiento() + ", "
+                   + "fecha_asignacion = '" + obj.getFecha_asignacion() + "', "
+                   + "id_usuario = " + obj.getId_usuario()+ ", "
+                   + "activo = " + obj.getActivo()+ " "
+                   + "Where id = " + obj.getId();
+        
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Update_TiposMantenimiento(Obj_TipoMantenimiento obj, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set descripcion = '" + obj.getDescripcion() + "', "
+                   + "precio = " + obj.getPrecio()+ ", "
+                   + "activo = " + obj.getActivo()+ " "
+                   + "Where id = " + obj.getId();
+        
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Update_Equipo(Obj_Equipos obj, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set descripcion = '" + obj.getDescripcion() + "', "
+                   + "precio = " + obj.getPrecio()+ ", "
+                   + "activo = " + obj.getActivo()+ " "
+                   + "Where id = " + obj.getId();
+        
         Rows_Affected = sql.executeUpdate(Qry);
 
         return Rows_Affected;

@@ -14,13 +14,15 @@ public class Obj_AsignacionMantenimiento {
     private int id_mantenimiento;
     private String fecha_asignacion;
     private int id_usuario;
+    private int activo;
 
-    public Obj_AsignacionMantenimiento(int id, int id_vehiculo, int id_mantenimiento, String fecha_asignacion, int id_usuario) {
+    public Obj_AsignacionMantenimiento(int id, int id_vehiculo, int id_mantenimiento, String fecha_asignacion, int id_usuario, int activo) {
         this.id = id;
         this.id_vehiculo = id_vehiculo;
         this.id_mantenimiento = id_mantenimiento;
         this.fecha_asignacion = fecha_asignacion;
         this.id_usuario = id_usuario;
+        this.activo = activo;
     }
 
     public Obj_AsignacionMantenimiento() {
@@ -65,4 +67,14 @@ public class Obj_AsignacionMantenimiento {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+
+    
 }
