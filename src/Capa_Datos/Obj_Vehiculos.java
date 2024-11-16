@@ -8,32 +8,33 @@ package Capa_Datos;
  *
  * @author Usuario
  */
-
-
 // -- Objeto para los datos del Usuario ->
 public class Obj_Vehiculos {
     
+    public Obj_Vehiculos(){
+
+    }
+
     // -- Variables ->
-    int     id;
-    String  placa;
-    String  modelo;
-    String  tipo_combustible;
-    double  kilometraje;
-    String  ubicacion_puerto;
-    int     activo;
+    int id;
+    String placa;
+    String nombre;
+    String marca;
+    String modelo;
+    int id_combustible;
+    int activo;
 
     // -- Constructores ->
-    public Obj_Vehiculos(int id, String placa, String modelo, String tipo_combustible, double kilometraje, String ubicacion_puerto, int activo) {
+    public Obj_Vehiculos(int id, String placa, String nombre, String marca, String modelo, int id_combustible, int activo) {
         this.id = id;
         this.placa = placa;
+        this.nombre = nombre;
+        this.marca = marca;
         this.modelo = modelo;
-        this.tipo_combustible = tipo_combustible;
-        this.kilometraje = kilometraje;
-        this.ubicacion_puerto = ubicacion_puerto;
+        this.id_combustible = id_combustible;
         this.activo = activo;
     }
-    
-    
+
     // -- Getters & Setters ->
     public int getId() {
         return id;
@@ -51,6 +52,22 @@ public class Obj_Vehiculos {
         this.placa = placa;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public String getModelo() {
         return modelo;
     }
@@ -59,28 +76,12 @@ public class Obj_Vehiculos {
         this.modelo = modelo;
     }
 
-    public String getTipo_combustible() {
-        return tipo_combustible;
+    public int getId_combustible() {
+        return id_combustible;
     }
 
-    public void setTipo_combustible(String tipo_combustible) {
-        this.tipo_combustible = tipo_combustible;
-    }
-
-    public double getKilometraje() {
-        return kilometraje;
-    }
-
-    public void setKilometraje(double kilometraje) {
-        this.kilometraje = kilometraje;
-    }
-
-    public String getUbicacion_puerto() {
-        return ubicacion_puerto;
-    }
-
-    public void setUbicacion_puerto(String ubicacion_puerto) {
-        this.ubicacion_puerto = ubicacion_puerto;
+    public void setId_combustible(int id_combustible) {
+        this.id_combustible = id_combustible;
     }
 
     public int getActivo() {

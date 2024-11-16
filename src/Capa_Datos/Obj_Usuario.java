@@ -11,7 +11,7 @@ package Capa_Datos;
 
 
 // -- Objeto para los datos del Usuario ->
-public class Obj_User {
+public class Obj_Usuario {
 
     // -- Variables ->
     private int          id;
@@ -21,7 +21,7 @@ public class Obj_User {
     private int      estado;
     
     // -- Constructores ->
-    public Obj_User(int id, String usuario, String contrasena, int rol, int estado) {
+    public Obj_Usuario(int id, String usuario, String contrasena, int rol, int estado) {
         this.id = id;
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -29,22 +29,30 @@ public class Obj_User {
         this.estado = estado;
     }
 
-    public Obj_User(int id, String usuario, String contrasena, int rol) {
+    public Obj_Usuario(String usuario, String contrasena, int rol, int estado) {
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.rol = rol;
+        this.estado = estado;
+    }
+
+    public Obj_Usuario(int id, String usuario, String contrasena, int rol) {
         this.id = id;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.rol = rol;
     }
 
-    public Obj_User(String usuario, String contrasena) {
+    public Obj_Usuario(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
-    public Obj_User() {
+    public Obj_Usuario() {
     }
     
     // -- Getters Y Setters ->
+
     public int getId() {
         return id;
     }
@@ -53,11 +61,11 @@ public class Obj_User {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setNombre(String usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
@@ -84,4 +92,5 @@ public class Obj_User {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+    
 }

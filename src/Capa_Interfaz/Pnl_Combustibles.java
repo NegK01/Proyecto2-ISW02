@@ -5,7 +5,7 @@
 package Capa_Interfaz;
 
 import Capa_Logica.Combustible;
-import Capa_Logica.OtrosSQL;
+import Capa_Logica.Otros;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,15 +21,15 @@ import net.proteanit.sql.DbUtils;
  */
 public class Pnl_Combustibles extends javax.swing.JPanel {
 
-    String tabla = "combustibles";
-    public int id_actual = 1;
-    private final OtrosSQL Sql = new OtrosSQL();
     private final Combustible combustible = new Combustible();
+    public int id_actual = 1;
+    private String tablaCombustible; 
 
     /**
      * Creates new form Pnl_VehiculosForm
      */
     public Pnl_Combustibles() {
+        this.tablaCombustible = combustible.tablaCombustible;
         initComponents();
         Llenar_Table();
     }
@@ -262,7 +262,7 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
         Txt_Nombre.setText("");
         Txt_Precio.setText("");
         try {
-            id_actual = Sql.Sig_Id(tabla);
+            id_actual = Otros.Sig_Id(tablaCombustible);
         } catch (SQLException ex) {
             Logger.getLogger(Pnl_Combustibles.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -309,11 +309,6 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
     }//GEN-LAST:event_Btn_ModificarActionPerformed
 
     private void Tbl_CombustiblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_CombustiblesMouseClicked
-//        try {
-//            id_actual = Sql.Sig_Id(tabla);
-//        } catch (SQLException ex) {
-//            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage()); 
-//        }
         
         int row = Tbl_Combustibles.getSelectedRow();
 
@@ -324,9 +319,9 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
         Txt_Precio.setText(String.valueOf(Modelo.getValueAt(row, 2)));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
-    public void Llenar_Table() {
+    public void Llenar_Table() { // Enviar por parametros (table - tablaSQL) si Combustibles requiere mas paneles
         try {
-            ResultSet Res = combustible.Consultar_Combustible();
+            ResultSet Res = Otros.Consultar_Tabla(tablaCombustible);
             Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());

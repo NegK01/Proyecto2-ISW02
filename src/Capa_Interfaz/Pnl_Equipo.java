@@ -5,11 +5,14 @@
 package Capa_Interfaz;
 
 import Capa_Logica.Equipo;
-import Capa_Logica.OtrosSQL;
+import Capa_Logica.Otros;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Insets;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -24,11 +27,13 @@ public class Pnl_Equipo extends javax.swing.JPanel {
      */
     private final Equipo equipo = new Equipo();
     private int id_actual = 1;
-    private OtrosSQL otros = new OtrosSQL();
+    private Otros otros = new Otros();
+    private String tablaEquipo; 
     
     public Pnl_Equipo() {
+        this.tablaEquipo = equipo.tablaTipos;
         initComponents();
-        Llenar_Tabla(Tbl_Combustibles);
+        Llenar_Tabla();
     }
 
     /**
@@ -40,31 +45,21 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        Cmb_Actividad1 = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        Txt_Precio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
+        Txt_Nombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        Cmb_Actividad1 = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText(" Código Usuario:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 170, 40));
 
         jButton4.setText("Agregar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +67,7 @@ public class Pnl_Equipo extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 120, 40));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 120, 40));
 
         jButton5.setText("Modificar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -80,56 +75,12 @@ public class Pnl_Equipo extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 120, 40));
-
-        Cmb_Actividad1.setBackground(new java.awt.Color(204, 204, 204));
-        Cmb_Actividad1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Cmb_Actividad1.setForeground(new java.awt.Color(102, 102, 102));
-        Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
-        Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 310, 40));
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Precio.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Precio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Precio.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Precio.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 310, 40));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Falta poner filtros");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 380, 40));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Digita el precio del combustible, Ejemplo: 0.00₡ (Con \".\")");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 380, 40));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -149,29 +100,47 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(Tbl_Combustibles);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 430, 340));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 430, 340));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Precio:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, 40));
+        Txt_Nombre.setBackground(new java.awt.Color(204, 204, 204));
+        Txt_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Nombre.setForeground(new java.awt.Color(102, 102, 102));
+        Txt_Nombre.setText("Nombre de la parte del equipo");
+        Txt_Nombre.setBackground(Otros.transparente);
+        Txt_Nombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Txt_NombreKeyPressed(evt);
+            }
+        });
+        jPanel3.add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 320, 70));
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        jLabel9.setIcon(new FlatSVGIcon("Imagenes/ParteEquipo_Nombre.svg"));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 350, 90));
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 910, 620));
+        Cmb_Actividad1.setBackground(new java.awt.Color(204, 204, 204));
+        Cmb_Actividad1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Cmb_Actividad1.setForeground(new java.awt.Color(102, 102, 102));
+        Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        Cmb_Actividad1.setBackground(Otros.transparente);
+        Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 203, 320, 40));
+
+        jLabel4.setIcon(new FlatSVGIcon("Imagenes/ParteEquipo_Estado.svg"));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 350, 90));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-            String descripcion = jTextArea1.getText().strip();
-            float precio = Float.parseFloat(Txt_Precio.getText().strip());
-            System.out.println(precio);
+            String descripcion = Txt_Nombre.getText().strip();
             int actividad = Cmb_Actividad1.getSelectedIndex();
 
-            int resultado = equipo.Insert_Equipo(descripcion, precio, actividad);
+            int resultado = equipo.Insert_Equipo(descripcion, actividad);
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                Llenar_Tabla(Tbl_Combustibles);
+                Llenar_Tabla();
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -181,16 +150,14 @@ public class Pnl_Equipo extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            float precio = Float.parseFloat(Txt_Precio.getText().strip());
             int actividad = Cmb_Actividad1.getSelectedIndex();
             int id = id_actual;
-            String descripcion = jTextArea1.getText().strip();
-            System.out.println(precio);
+            String descripcion = Txt_Nombre.getText().strip();
 
-            int resultado = equipo.Update_Equipo(id, descripcion, precio, actividad);
+            int resultado = equipo.Update_Equipo(id, descripcion, actividad);
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                Llenar_Tabla(Tbl_Combustibles);
+                Llenar_Tabla();
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -210,15 +177,20 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         DefaultTableModel Modelo = (DefaultTableModel) Tbl_Combustibles.getModel();
 
         id_actual = (int) Modelo.getValueAt(row, 0);
-        jTextArea1.setText((String) Modelo.getValueAt(row, 1));
-        Txt_Precio.setText(String.valueOf(Modelo.getValueAt(row, 2)));
+        Txt_Nombre.setText((String) Modelo.getValueAt(row, 1));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
+    private void Txt_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_NombreKeyPressed
+//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//            Txt_Precio.requestFocus();
+//        }
+    }//GEN-LAST:event_Txt_NombreKeyPressed
+
     
-    public void Llenar_Tabla(JTable tabla) {
+    public void Llenar_Tabla() {
         try {
-            ResultSet Res = equipo.Consultar_Tabla();
-            tabla.setModel(DbUtils.resultSetToTableModel(Res));
+            ResultSet Res = Otros.Consultar_Tabla(tablaEquipo);
+            Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
         }
@@ -227,18 +199,13 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Cmb_Actividad1;
     private javax.swing.JTable Tbl_Combustibles;
-    private javax.swing.JTextField Txt_Precio;
+    private javax.swing.JTextField Txt_Nombre;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

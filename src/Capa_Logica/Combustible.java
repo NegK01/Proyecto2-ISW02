@@ -15,21 +15,21 @@ import java.sql.SQLException;
  */
 public class Combustible {
     private Obj_Combustible obj_Combustible;
-    private final OtrosSQL Sql = new OtrosSQL();
-    private final String tabla = "combustibles";
+    private final Otros Sql = new Otros();
+    public final String tablaCombustible = "combustibles";
 
     public int Insert_Combustible(String nombre, String precio, int activo) throws SQLException {
-        int id = Sql.Sig_Id(tabla);
+        int id = Otros.Sig_Id(tablaCombustible);
         obj_Combustible = new Obj_Combustible(id, nombre, precio, activo);
-        return Conexion_SQL.InsertCombustible(obj_Combustible, tabla);
+        return Conexion_SQL.InsertCombustible(obj_Combustible, tablaCombustible);
     }
     
     public int Update_Combustible(int id, String nombre, String precio, int activo) throws SQLException {
         obj_Combustible = new Obj_Combustible(id, nombre, precio, activo);
-        return Conexion_SQL.UpdateCombustible(obj_Combustible, tabla);
+        return Conexion_SQL.UpdateCombustible(obj_Combustible, tablaCombustible);
     }
- 
+    
     public ResultSet Consultar_Combustible() throws SQLException {
-        return Conexion_SQL.consultar_Tabla(tabla);
+        return Conexion_SQL.consultar_Combustibles(tablaCombustible);
     }
 }

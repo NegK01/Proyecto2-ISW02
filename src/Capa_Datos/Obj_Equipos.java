@@ -11,19 +11,16 @@ package Capa_Datos;
 public class Obj_Equipos {
     private int id;
     private String descripcion;
-    private float precio;
     private int activo;
 
-    public Obj_Equipos(int id, String descripcion, float precio, int activo) {
+    public Obj_Equipos(int id, String descripcion, int activo) {
         this.id = id;
         this.descripcion = descripcion;
-        this.precio = precio;
         this.activo = activo;
     }
 
-    public Obj_Equipos(String descripcion, float precio, int activo) {
+    public Obj_Equipos(String descripcion, int activo) {
         this.descripcion = descripcion;
-        this.precio = precio;
         this.activo = activo;
     }
 
@@ -44,14 +41,6 @@ public class Obj_Equipos {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
     }
 
     public int getActivo() {

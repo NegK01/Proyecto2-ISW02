@@ -22,14 +22,18 @@ public class Frm_Principal extends javax.swing.JFrame {
     private final AnimacionPnl anima = new AnimacionPnl();
     private int mouseX, mouseY; // Corrupcion entre cambios de resolucion
 
-    public Frm_Principal() {
+    public Frm_Principal(int rolLogin) {
         initComponents();
         setSize(1195, 685); //1080, 642
         setResizable(false);
         setBackground(new Color(0.1f, 0.1f, 0.1f, 0.1f)); // Corrupcion entre cambios de resolucion
         Listeners();
+        if (rolLogin != 1) {
+            Pnl_Administrador.setVisible(false);
+        }
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +101,11 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_Dashboard.setIcon(new FlatSVGIcon("Imagenes/Button.svg"));
         Btn_Dashboard.setFocusPainted(false);
+        Btn_Dashboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_DashboardActionPerformed(evt);
+            }
+        });
         Pnl_Menu.add(Btn_Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 240, 50));
 
         Btn_CerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
@@ -159,6 +168,11 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_Usuarios.setIcon(new FlatSVGIcon("Imagenes/Btn_Usuarios.svg"));
         Btn_Usuarios.setFocusPainted(false);
+        Btn_Usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_UsuariosActionPerformed(evt);
+            }
+        });
         Pnl_Administrador.add(Btn_Usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 240, 50));
 
         Pnl_Menu.add(Pnl_Administrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 240, 240));
@@ -220,11 +234,21 @@ public class Frm_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_CerrarSesionActionPerformed
 
     private void Btn_VehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_VehiculosActionPerformed
-         
+        Pnl_Vehiculos Comp = new Pnl_Vehiculos();
+        Comp.setSize(930, 620);
+        Comp.setLocation(0, 0);
+
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate();
+        Pnl_Contenedor.repaint();
     }//GEN-LAST:event_Btn_VehiculosActionPerformed
 
     private void Btn_PartesDeEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PartesDeEquipoActionPerformed
         Pnl_Equipo Comp = new Pnl_Equipo();
+        Comp.setSize(930, 620);
+        Comp.setLocation(0, 0);
+        
         Pnl_Contenedor.removeAll();
         Pnl_Contenedor.add(Comp);
         Pnl_Contenedor.revalidate();
@@ -249,6 +273,22 @@ public class Frm_Principal extends javax.swing.JFrame {
         Pnl_Contenedor.revalidate(); 
         Pnl_Contenedor.repaint(); 
     }//GEN-LAST:event_Btn_MantenimientoActionPerformed
+
+    private void Btn_UsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_UsuariosActionPerformed
+        Pnl_Usuarios Comp = new Pnl_Usuarios();
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate(); 
+        Pnl_Contenedor.repaint(); 
+    }//GEN-LAST:event_Btn_UsuariosActionPerformed
+
+    private void Btn_DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_DashboardActionPerformed
+        Pnl_Dashboard Comp = new Pnl_Dashboard();
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate(); 
+        Pnl_Contenedor.repaint(); 
+    }//GEN-LAST:event_Btn_DashboardActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +320,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Frm_Principal().setVisible(true);
+                new Frm_Principal(0).setVisible(true);
             }
         });
     }

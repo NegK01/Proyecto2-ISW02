@@ -5,6 +5,7 @@
 package Capa_Interfaz;
 
 import Capa_Logica.Login;
+import Capa_Logica.Otros;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
@@ -182,28 +183,29 @@ public class Frm_Login extends javax.swing.JFrame {
 
     // Metodo para validar credenciales despues de haber tocado el boton de inicio de sesion
     private void Btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LoginActionPerformed
-//        try {
-//            String username = txt_Usr.getText();
-//            String password = new String(txt_Pwd.getPassword());
-//            boolean loginCorrecto = false;
-//
-//            if (username.isBlank() || password.isBlank()) {
-//                JOptionPane.showMessageDialog(null, "Ingrese las credenciales correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-//                return;
-//            }
-//
-//            loginCorrecto = login.ValidarLogin(username, password);
-//            if (loginCorrecto) {
-                prc = new Frm_Principal();
+        try {
+            String username = txt_Usr.getText();
+            String password = new String(txt_Pwd.getPassword());
+            password = Otros.EncriptarMD5(password.strip());
+
+            if (username.isBlank() || password.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Ingrese las credenciales correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            int rolLogin = login.ValidarLogin(username, password);
+//            rolLogin = 1;
+            if (rolLogin != -1) {
+                prc = new Frm_Principal(rolLogin);
                 prc.setLocationRelativeTo(null);
                 prc.setVisible(true); // Mostramos el siguiente Frame
                 setVisible(false);  // Ocultamos la ventana actual
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
-//        }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
+        }
     }//GEN-LAST:event_Btn_LoginActionPerformed
 
     /**

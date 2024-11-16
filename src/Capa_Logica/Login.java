@@ -5,7 +5,7 @@
 package Capa_Logica;
 
 import Capa_Datos.Conexion_SQL;
-import Capa_Datos.Obj_User;
+import Capa_Datos.Obj_Usuario;
 import java.sql.SQLException;
 
 /**
@@ -14,11 +14,10 @@ import java.sql.SQLException;
  */
 public class Login {
 
-    private Obj_User obj_user;
+    private Obj_Usuario obj_user;
 
-    public boolean ValidarLogin(String usuario, String contrasena) throws SQLException {
-        obj_user = new Obj_User(usuario, contrasena);
-        int rol = Conexion_SQL.ValidarLoginSQL(obj_user);
-        return (rol != 0); // 1-2 True / 0 False
+    public int ValidarLogin(String usuario, String contrasena) throws SQLException {
+        obj_user = new Obj_Usuario(usuario, contrasena);
+        return Conexion_SQL.ValidarLoginSQL(obj_user); // Retorna el rol (1 / 2)
     }
 }

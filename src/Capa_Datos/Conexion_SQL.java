@@ -17,13 +17,13 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver://192.168.0.6:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver://localhost:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
-                + "user=sqlUser;"
-                + "password=pass;"
+                + "user=sa;"
+                + "password= ;"
                 + "encrypt=true;trustServerCertificate=true;";
 
-        try {
+        try {   
             Connection con = DriverManager.getConnection(CadenaConexion);
             return con;
         } catch (SQLException e) {
@@ -42,7 +42,6 @@ public class Conexion_SQL {
         String Qry = "Insert Into " + tabla + " "
                    + "Values(" + obj.getId() + ","
                    + " '" + obj.getDescripcion()+ "',"
-                   + " " + obj.getPrecio()+ ","
                    + " " + obj.getActivo() + ")";
         Rows_Affected = sql.executeUpdate(Qry);
 
@@ -58,7 +57,6 @@ public class Conexion_SQL {
         String Qry = "Insert Into " + tabla + " "
                    + "Values(" + obj.getId() + ","
                    + " '" + obj.getDescripcion()+ "',"
-                   + " " + obj.getPrecio()+ ","
                    + " " + obj.getActivo() + ")";
         Rows_Affected = sql.executeUpdate(Qry);
 
@@ -100,15 +98,55 @@ public class Conexion_SQL {
 
         return Rows_Affected;
     }
+    
+    // -- Inserta la info del Equipo al table Equipos  
+    public static int Insert_Usuarios(Obj_Usuario obj, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + obj.getId() + ", "
+                   + "'" + obj.getUsuario()+ "', "
+                   + "'" + obj.getContrasena() + "', "
+                   + "" + obj.getRol()+ ", "
+                   + "" + obj.getEstado()+ ")";
+
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int InsertVehiculo(Obj_Vehiculos Veh, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + Veh.id + ", "
+                   + "'" + Veh.placa + "', "
+                   + "'" + Veh.nombre + "', "
+                   + "'" + Veh.marca + "', "
+                   + "'" + Veh.modelo + "', "
+                   + Veh.id_combustible + ", "
+                   + Veh.activo + ")";
+
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
 
     // CONSULTAS
     // Con esta funcion validamos el inicio de sesion del usuario y obtenemos su rol
-    public static int ValidarLoginSQL(Obj_User obj) throws SQLException {
-        int resultado = 0;
+    public static int ValidarLoginSQL(Obj_Usuario obj) throws SQLException {
+        int resultado = -1;
 
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
-            String qry = "SELECT contrasena, rol FROM Usuarios WHERE usuario = '" + obj.getNombre() + "'";
+            String qry = "SELECT contrasena, rol FROM Usuarios WHERE usuario = '" + obj.getUsuario()
+                       + "' AND estado = 1";
 
             ResultSet res = sql.executeQuery(qry);
             while (res.next()) {
@@ -133,6 +171,27 @@ public class Conexion_SQL {
             ResultSet Opr = sql.executeQuery(Consulta);
             while (Opr.next()) {
                 Resultado = Opr.getInt(1) + 1;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+        }
+
+        return Resultado;
+    }
+    
+    // Funcion que obtenemos la cantidad de admins restantes en la base de datos
+    public static int Consultar_CantAdmins() throws SQLException {
+        int Resultado = 1;
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "SELECT COUNT(*) AS total_roles FROM Usuarios "
+                            + "WHERE rol = 1 AND estado = 1";
+
+            ResultSet Opr = sql.executeQuery(Consulta);
+            while (Opr.next()) {
+                Resultado = Opr.getInt(1);
                 System.out.println("\u001B[32mID ACTUAL:\u001B[0m " + Resultado);
             }
 
@@ -159,6 +218,45 @@ public class Conexion_SQL {
             return null;
         }
     }
+    
+    public static ResultSet consultar_TablaUsuario(String tabla) throws SQLException {
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "Select id, usuario, rol, estado "
+                    + "From " + tabla;
+
+            ResultSet resultado = sql.executeQuery(Consulta);
+
+            return resultado;
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+            return null;
+        }
+    }
+    
+    public static ResultSet consultar_Combustibles(String tabla) throws SQLException {
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "select *, "
+                + "Case "
+                + "When activo = 1 theN 'activo' "
+                + "When activo = 0 then 'inactivo' "
+                + "Else 'Desconocido' "
+                + "end as estado_activo "
+                + "from " + tabla;
+
+            ResultSet resultado = sql.executeQuery(Consulta);
+
+            return resultado;
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+            return null;
+        }
+    }   
 
     // UPDATES
     // -- Modifica la info del Equipo al table Equipos  
@@ -203,7 +301,6 @@ public class Conexion_SQL {
         //String que contiene el script de  la operacion de sql
         String Qry = "Update " + tabla + " "
                    + "Set descripcion = '" + obj.getDescripcion() + "', "
-                   + "precio = " + obj.getPrecio()+ ", "
                    + "activo = " + obj.getActivo()+ " "
                    + "Where id = " + obj.getId();
         
@@ -219,7 +316,6 @@ public class Conexion_SQL {
         //String que contiene el script de  la operacion de sql
         String Qry = "Update " + tabla + " "
                    + "Set descripcion = '" + obj.getDescripcion() + "', "
-                   + "precio = " + obj.getPrecio()+ ", "
                    + "activo = " + obj.getActivo()+ " "
                    + "Where id = " + obj.getId();
         
@@ -227,5 +323,41 @@ public class Conexion_SQL {
 
         return Rows_Affected;
     }
+    
+    public static int Update_Usuario(Obj_Usuario obj, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set usuario = '" + obj.getUsuario() + "', "
+                   + "contrasena = '" + obj.getContrasena() + "', "
+                   + "rol = " + obj.getRol() + ", "
+                   + "estado = " + obj.getEstado() + " "
+                   + "Where id = " + obj.getId();
+        
+        Rows_Affected = sql.executeUpdate(Qry);
 
+        return Rows_Affected;
+    }
+
+    
+    public static int UpdateVehiculo(Obj_Vehiculos Veh, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set placa = '" + Veh.placa + "',"
+                   + "nombre = '" + Veh.nombre + "',"
+                   + "marca = '" + Veh.marca + "',"
+                   + "modelo = '" + Veh.modelo + "',"
+                   + "id_combustible = " + Veh.id_combustible + ","
+                   + "activo = " + Veh.activo + " "
+                   + "Where id = " + Veh.id;
+        
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
 }

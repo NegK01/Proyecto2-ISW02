@@ -5,6 +5,8 @@
 package Capa_Interfaz;
 
 import Capa_Logica.Mantenimiento;
+import Capa_Logica.Otros;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
@@ -28,10 +30,14 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
      */
     private final Mantenimiento mantenimiento = new Mantenimiento();
     private int id_actual = 1;
+    public String tablaAsigna;
+    public String tablaTipos;
     
     public Pnl_Mantenimiento() {
+        this.tablaAsigna = mantenimiento.tablaAsigna;
+        this.tablaTipos = mantenimiento.tablaTipos;
         initComponents();
-        Llenar_Tabla(Tbl_Combustibles);
+        Llenar_Tabla(Tbl_Combustibles, tablaTipos);
     }
 
     /**
@@ -45,19 +51,17 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        Cmb_Actividad1 = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        Txt_Precio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
+        Cmb_Actividad1 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         panelRound1 = new Capa_Interfaz.PanelRound();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -70,17 +74,11 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         Cmb_Actividad = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText(" Código Usuario:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 170, 40));
 
         jButton4.setText("Agregar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +86,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, 120, 40));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 120, 40));
 
         jButton5.setText("Modificar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -96,56 +94,23 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 120, 40));
-
-        Cmb_Actividad1.setBackground(new java.awt.Color(204, 204, 204));
-        Cmb_Actividad1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Cmb_Actividad1.setForeground(new java.awt.Color(102, 102, 102));
-        Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
-        Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 310, 40));
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Precio.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Precio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Precio.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Precio.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 310, 40));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 120, 40));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Falta poner filtros");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 380, 40));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Digita el precio del combustible, Ejemplo: 0.00₡ (Con \".\")");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
-
+        jTextArea1.setBackground(new java.awt.Color(232, 232, 232));
         jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(102, 102, 102));
+        jTextArea1.setRows(1);
+        jTextArea1.setTabSize(1);
         jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane1.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 0, 30));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 70, 348, 90));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,12 +132,36 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 430, 340));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("Precio:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 80, 40));
+        Cmb_Actividad1.setBackground(new java.awt.Color(204, 204, 204));
+        Cmb_Actividad1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Cmb_Actividad1.setForeground(new java.awt.Color(102, 102, 102));
+        Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Cmb_Actividad1.setBackground(Otros.transparente);
+        jPanel1.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 223, 320, 40));
 
-        jTabbedPane1.addTab("tab2", jPanel1);
+        jLabel8.setIcon(new FlatSVGIcon("Imagenes/Mantenimiento_TipoMantenimientoEstado.svg"));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 350, 90));
+
+        jLabel9.setIcon(new FlatSVGIcon("Imagenes/Mantenimiento_TipoMantenimiento.svg"));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 360, 150));
+
+        jTabbedPane1.addTab("Tipo de mantenimiento", jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 585, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab3", jPanel3);
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setBackground(new java.awt.Color(0,0,0,0));
@@ -246,21 +235,6 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("tab1", panelRound1);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel3);
-
         add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 910, 620));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -291,14 +265,12 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             String descripcion = jTextArea1.getText().strip();
-            float precio = Float.parseFloat(Txt_Precio.getText().strip());
-            System.out.println(precio);
             int actividad = Cmb_Actividad1.getSelectedIndex();
 
-            int resultado = mantenimiento.Insert_TipoMantenimiento(descripcion, precio, actividad);
+            int resultado = mantenimiento.Insert_TipoMantenimiento(descripcion, actividad);
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                Llenar_Tabla(Tbl_Combustibles);
+                Llenar_Tabla(Tbl_Combustibles, tablaTipos);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -308,16 +280,14 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-            float precio = Float.parseFloat(Txt_Precio.getText().strip());
             int actividad = Cmb_Actividad1.getSelectedIndex();
             int id = id_actual;
             String descripcion = jTextArea1.getText().strip();
-            System.out.println(precio);
             
-            int resultado = mantenimiento.Update_TipoMantenimiento(id, descripcion, precio, actividad);
+            int resultado = mantenimiento.Update_TipoMantenimiento(id, descripcion, actividad);
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                Llenar_Tabla(Tbl_Combustibles);
+                Llenar_Tabla(Tbl_Combustibles, tablaTipos);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -326,25 +296,19 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void Tbl_CombustiblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_CombustiblesMouseClicked
-        //        try {
-            //            id_actual = Sql.Sig_Id(tabla);
-            //        } catch (SQLException ex) {
-            //            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
-            //        }
-
+        
         int row = Tbl_Combustibles.getSelectedRow();
 
         DefaultTableModel Modelo = (DefaultTableModel) Tbl_Combustibles.getModel();
 
         id_actual = (int) Modelo.getValueAt(row, 0);
         jTextArea1.setText((String) Modelo.getValueAt(row, 1));
-        Txt_Precio.setText(String.valueOf(Modelo.getValueAt(row, 2)));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
-    public void Llenar_Tabla(JTable tabla) {
+    public void Llenar_Tabla(JTable table, String tablaSQL) {
         try {
-            ResultSet Res = mantenimiento.Consultar_Tipos();
-            tabla.setModel(DbUtils.resultSetToTableModel(Res));
+            ResultSet Res = Otros.Consultar_Tabla(tablaSQL);
+            table.setModel(DbUtils.resultSetToTableModel(Res));
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
         }
@@ -355,7 +319,6 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Cmb_Actividad;
     private javax.swing.JComboBox<String> Cmb_Actividad1;
     private javax.swing.JTable Tbl_Combustibles;
-    private javax.swing.JTextField Txt_Precio;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -365,12 +328,10 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
