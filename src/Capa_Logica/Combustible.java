@@ -18,14 +18,14 @@ public class Combustible {
     private final Otros Sql = new Otros();
     public final String tablaCombustible = "combustibles";
 
-    public int Insert_Combustible(String nombre, String precio, int activo) throws SQLException {
+    public int Insert_Combustible(String nombre, int activo) throws SQLException {
         int id = Otros.Sig_Id(tablaCombustible);
-        obj_Combustible = new Obj_Combustible(id, nombre, precio, activo);
+        obj_Combustible = new Obj_Combustible(id, nombre, activo);
         return Conexion_SQL.InsertCombustible(obj_Combustible, tablaCombustible);
     }
     
-    public int Update_Combustible(int id, String nombre, String precio, int activo) throws SQLException {
-        obj_Combustible = new Obj_Combustible(id, nombre, precio, activo);
+    public int Update_Combustible(int id, String nombre, int activo) throws SQLException {
+        obj_Combustible = new Obj_Combustible(id, nombre, activo);
         return Conexion_SQL.UpdateCombustible(obj_Combustible, tablaCombustible);
     }
     

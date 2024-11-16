@@ -9,22 +9,18 @@ package Capa_Datos;
  * @author Elias
  */
 public class Obj_Combustible {
-    
     int        id;
     String     nombre;
-    String     precio;
     int        activo;
 
-    public Obj_Combustible(int id, String nombre, String precio, int activo) {
+    public Obj_Combustible(int id, String nombre, int activo) {
         this.id = id;
         this.nombre = nombre;
-        this.precio = precio;
         this.activo = activo;
     }
 
-    public Obj_Combustible(String nombre, String precio, int activo) {
+    public Obj_Combustible(String nombre, int activo) {
         this.nombre = nombre;
-        this.precio = precio;
         this.activo = activo;
     }
 
@@ -47,14 +43,6 @@ public class Obj_Combustible {
         this.nombre = nombre;
     }
 
-    public String getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(String precio) {
-        this.precio = precio;
-    }
-
     public int getActivo() {
         return activo;
     }
@@ -62,6 +50,4 @@ public class Obj_Combustible {
     public void setActivo(int activo) {
         this.activo = activo;
     }
-
-    
 }

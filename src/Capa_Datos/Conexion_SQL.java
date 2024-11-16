@@ -17,10 +17,10 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver://localhost:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
-                + "user=sa;"
-                + "password= ;"
+                + "user=sqlUser;"
+                + "password=pass;"
                 + "encrypt=true;trustServerCertificate=true;";
 
         try {   
@@ -91,7 +91,6 @@ public class Conexion_SQL {
         String Qry = "Insert Into " + tabla + " "
                    + "Values(" + Com.id + ", "
                    + "'" + Com.nombre + "', "
-                   + "" + Com.precio + ", "
                    + "" + Com.activo + ")";
 
         Rows_Affected = sql.executeUpdate(Qry);
@@ -240,12 +239,12 @@ public class Conexion_SQL {
 
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
-            String Consulta = "select *, "
+            String Consulta = "select id,nombre, "
                 + "Case "
                 + "When activo = 1 theN 'activo' "
                 + "When activo = 0 then 'inactivo' "
                 + "Else 'Desconocido' "
-                + "end as estado_activo "
+                + "end as estado "
                 + "from " + tabla;
 
             ResultSet resultado = sql.executeQuery(Consulta);
@@ -267,7 +266,6 @@ public class Conexion_SQL {
         //String que contiene el script de  la operacion de sql
         String Qry = "Update " + tabla + " "
                    + "Set nombre = '" + Com.nombre + "',"
-                   + "precio = " + Com.precio + ","
                    + "activo = " + Com.activo + " "
                    + "Where id = " + Com.id;
         

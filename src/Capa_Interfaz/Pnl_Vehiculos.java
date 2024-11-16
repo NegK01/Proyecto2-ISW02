@@ -564,7 +564,7 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         String actividad = "inactivo";
 
         DefaultTableModel Modelo = (DefaultTableModel) Tbl_Combustibles.getModel();
-        actividad = String.valueOf(Modelo.getValueAt(row, 4));
+        actividad = String.valueOf(Modelo.getValueAt(row, 2));
 
         if (actividad.equals("activo")) {
             Lbl_Id.setText(String.valueOf(Modelo.getValueAt(row, 0)));

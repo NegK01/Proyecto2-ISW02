@@ -6,6 +6,7 @@ package Capa_Interfaz;
 
 import Capa_Logica.Combustible;
 import Capa_Logica.Otros;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,24 +44,14 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        Txt_Precio = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
         Cmb_Actividad = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
         Btn_Nuevo = new javax.swing.JButton();
         Btn_Guardar = new javax.swing.JButton();
         Btn_Modificar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         Txt_Nombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
@@ -68,22 +59,13 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(930, 620));
         setPreferredSize(new java.awt.Dimension(930, 620));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Sigue el combustible activo/inactivo?");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, 30));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Actividad:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 80, 40));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 320, 30));
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -95,61 +77,16 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Table de información, selecciona la linea que necesites:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, -1, 30));
-
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Precio.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Precio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Precio.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Precio.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 310, 40));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 420, 30));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Nombre:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 80, 40));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Digita el nombre del combustible");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 30));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 320, 30));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Precio:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 80, 40));
 
         Cmb_Actividad.setBackground(new java.awt.Color(204, 204, 204));
         Cmb_Actividad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Cmb_Actividad.setForeground(new java.awt.Color(102, 102, 102));
         Cmb_Actividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        Cmb_Actividad.setBackground(Otros.transparente);
         Cmb_Actividad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(Cmb_Actividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 310, 40));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Digita el precio del combustible, Ejemplo: 0.00₡ (Con \".\")");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, 30));
+        add(Cmb_Actividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 313, 320, 40));
 
         Btn_Nuevo.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Nuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -160,7 +97,7 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
                 Btn_NuevoActionPerformed(evt);
             }
         });
-        add(Btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 310, 30));
+        add(Btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 310, 30));
 
         Btn_Guardar.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Guardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -171,7 +108,7 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
                 Btn_GuardarActionPerformed(evt);
             }
         });
-        add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 310, 30));
+        add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 310, 30));
 
         Btn_Modificar.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Modificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -182,38 +119,19 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
                 Btn_ModificarActionPerformed(evt);
             }
         });
-        add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 310, 30));
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 310, 30));
 
         Txt_Nombre.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Nombre.setForeground(new java.awt.Color(51, 51, 51));
+        Txt_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Nombre.setForeground(new java.awt.Color(102, 102, 102));
+        Txt_Nombre.setBackground(Otros.transparente);
         Txt_Nombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Txt_NombreKeyPressed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 40));
+        add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 118, 320, 70));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,17 +168,21 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Registra, modifica y elimina combustibles:");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 30));
+
+        jLabel7.setIcon(new FlatSVGIcon("Imagenes/Combustible_NombreCombustible.svg"));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 350, 90));
+
+        jLabel5.setIcon(new FlatSVGIcon("Imagenes/Combustible_EstadoCombustible.svg"));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 350, 90));
     }// </editor-fold>//GEN-END:initComponents
 
     private void Txt_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_NombreKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Txt_Precio.requestFocus();
         }
     }//GEN-LAST:event_Txt_NombreKeyPressed
 
     private void Btn_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NuevoActionPerformed
         Txt_Nombre.setText("");
-        Txt_Precio.setText("");
         try {
             id_actual = Otros.Sig_Id(tablaCombustible);
         } catch (SQLException ex) {
@@ -272,12 +194,10 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
 
         String nombre = Txt_Nombre.getText();
 
-        String precio = Txt_Precio.getText();
-
         int actividad = Cmb_Actividad.getSelectedIndex();
 
         try {
-            int Res = combustible.Insert_Combustible(nombre, precio, actividad);
+            int Res = combustible.Insert_Combustible(nombre, actividad);
             if (Res != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados exitosamente", "Importante", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Table();
@@ -291,13 +211,11 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
 
         String nombre = Txt_Nombre.getText();
 
-        String precio = Txt_Precio.getText();
-
         int actividad = Cmb_Actividad.getSelectedIndex();
 
 
         try {
-            int Res = combustible.Update_Combustible(id_actual, nombre, precio, actividad);
+            int Res = combustible.Update_Combustible(id_actual, nombre, actividad);
             if (Res != 0) {
                 JOptionPane.showMessageDialog(null, "Datos actualizados exitosamente", "Importante", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Table();
@@ -316,7 +234,6 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
 
         id_actual = (int) Modelo.getValueAt(row, 0);
         Txt_Nombre.setText((String) Modelo.getValueAt(row, 1));
-        Txt_Precio.setText(String.valueOf(Modelo.getValueAt(row, 2)));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
     public void Llenar_Table() { // Enviar por parametros (table - tablaSQL) si Combustibles requiere mas paneles
@@ -335,22 +252,14 @@ public class Pnl_Combustibles extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Cmb_Actividad;
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.JTextField Txt_Nombre;
-    private javax.swing.JTextField Txt_Precio;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
