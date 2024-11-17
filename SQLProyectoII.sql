@@ -16,11 +16,11 @@ CREATE TABLE Usuarios(
 	usuario		varchar(55) unique not null,
 	contrasena	varchar(256) not null,
 	rol			int not null, -- 1 = Admin  / 0	 = Usuario
-	estado      int not null, -- 1 = Activo / 0 = Inactivo
+	activo      int not null, -- 1 = Activo / 0 = Inactivo
 );
 --insert into Usuarios values (1,'1','c4ca4238a0b923820dcc509a6f75849b',1,1);
 
--- vehiculos --
+-- *****vehiculos***** --
 CREATE TABLE vehiculos(
     id					int PRIMARY KEY,
     placa				varchar(20) UNIQUE NOT NULL,
@@ -39,6 +39,15 @@ CREATE TABLE combustibles(
     --precio             decimal(10,2) NOT NULL,
     activo             int NOT NULL -- activo = 1, inactivo = 0
 );
+
+select * from combustibles where activo in (1,0)
+
+select id,nombre, Case When activo = 1 theN 'activo' 
+                When activo = 0 then 'inactivo' 
+                Else 'Desconocido' 
+                end as estado_activo 
+                from  combustibles;
+
 
 -- tanques_combustible --
 CREATE TABLE tanques_combustible(
@@ -101,7 +110,7 @@ CREATE TABLE partes_de_equipos(
     --cantidad_stock     int NOT NULL,
 	activo             int NOT NULL
 );
-
+select * from partes_de_equipos where activo in (0)
 -- *****tipos_de_mantenimientos***** --
 CREATE TABLE tipos_de_mantenimientos(
     id				   int PRIMARY KEY,
