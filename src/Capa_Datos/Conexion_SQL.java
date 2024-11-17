@@ -17,10 +17,10 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver:localhost:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
-                + "user=sqlUser;"
-                + "password=pass;"
+                + "user=sa;"
+                + "password=;"
                 + "encrypt=true;trustServerCertificate=true;";
 
         try {   
@@ -145,7 +145,7 @@ public class Conexion_SQL {
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
             String qry = "SELECT contrasena, rol FROM Usuarios WHERE usuario = '" + obj.getUsuario()
-                       + "' AND estado = 1";
+                       + "' AND activo = 1";
 
             ResultSet res = sql.executeQuery(qry);
             while (res.next()) {
@@ -186,7 +186,7 @@ public class Conexion_SQL {
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
             String Consulta = "SELECT COUNT(*) AS total_roles FROM Usuarios "
-                            + "WHERE rol = 1 AND estado = 1";
+                            + "WHERE rol = 1 AND activo = 1";
 
             ResultSet Opr = sql.executeQuery(Consulta);
             while (Opr.next()) {
@@ -218,12 +218,44 @@ public class Conexion_SQL {
         }
     }
     
+    public static ResultSet consultar_TablaFiltro(String tabla, String filtro) throws SQLException {
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "Select * From " + tabla + " where activo in (" + filtro + ")";
+
+            ResultSet resultado = sql.executeQuery(Consulta);
+
+            return resultado;
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+            return null;
+        }
+    }
+    
     public static ResultSet consultar_TablaUsuario(String tabla) throws SQLException {
 
         try {
             Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
-            String Consulta = "Select id, usuario, rol, estado "
+            String Consulta = "Select id, usuario, rol, activo "
                     + "From " + tabla;
+
+            ResultSet resultado = sql.executeQuery(Consulta);
+
+            return resultado;
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+            return null;
+        }
+    }
+    
+    public static ResultSet consultar_TablaUsuarioFiltro(String tabla, String filtro) throws SQLException {
+
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "Select id, usuario, rol, activo From " + tabla + " where activo in (" + filtro + ")";
 
             ResultSet resultado = sql.executeQuery(Consulta);
 
@@ -331,7 +363,7 @@ public class Conexion_SQL {
                    + "Set usuario = '" + obj.getUsuario() + "', "
                    + "contrasena = '" + obj.getContrasena() + "', "
                    + "rol = " + obj.getRol() + ", "
-                   + "estado = " + obj.getEstado() + " "
+                   + "activo = " + obj.getEstado() + " "
                    + "Where id = " + obj.getId();
         
         Rows_Affected = sql.executeUpdate(Qry);

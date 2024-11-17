@@ -26,6 +26,10 @@ import java.sql.SQLException;
  */
 
 public class Otros {
+    public static final String filtroTodos = "1,0";
+    public static final String filtroActivos = "1";
+    public static final String filtroInactivos = "0";
+    
 
     public static Color transparente = new Color(0, 0, 0, 0);
 
@@ -37,6 +41,11 @@ public class Otros {
     // Funcion para obtener los datos de una tabla
     public static ResultSet Consultar_Tabla(String tabla) throws SQLException {
         return Conexion_SQL.consultar_Tabla(tabla);
+    }
+    
+    // Funcion para obtener los datos de una tabla con un filtro de actividad-estado
+    public static ResultSet Consultar_TablaFiltro(String tabla, String filtro) throws SQLException {
+        return Conexion_SQL.consultar_TablaFiltro(tabla, filtro);
     }
 
     // Funcion para encriptar

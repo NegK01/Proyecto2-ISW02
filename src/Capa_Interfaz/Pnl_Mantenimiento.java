@@ -10,6 +10,8 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -32,12 +34,13 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private int id_actual = 1;
     public String tablaAsigna;
     public String tablaTipos;
-    
+
     public Pnl_Mantenimiento() {
         this.tablaAsigna = mantenimiento.tablaAsigna;
         this.tablaTipos = mantenimiento.tablaTipos;
         initComponents();
         Llenar_Tabla(Tbl_Combustibles, tablaTipos);
+        Listeners();
     }
 
     /**
@@ -49,11 +52,11 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -61,6 +64,9 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         Cmb_Actividad1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         panelRound1 = new Capa_Interfaz.PanelRound();
         jTextField2 = new javax.swing.JTextField();
@@ -96,11 +102,6 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 120, 40));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Falta poner filtros");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 380, 40));
-
         jTextArea1.setBackground(new java.awt.Color(232, 232, 232));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -130,7 +131,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(Tbl_Combustibles);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 430, 340));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 430, 340));
 
         Cmb_Actividad1.setBackground(new java.awt.Color(204, 204, 204));
         Cmb_Actividad1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -145,6 +146,22 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         jLabel9.setIcon(new FlatSVGIcon("Imagenes/Mantenimiento_TipoMantenimiento.svg"));
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 360, 150));
+
+        jRadioButton1.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodos.svg"));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodosSelected.svg"));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 70, -1));
+
+        jRadioButton2.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivos.svg"));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivosSelected.svg"));
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 80, -1));
+
+        jRadioButton3.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivos.svg"));
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, 90, -1));
 
         jTabbedPane1.addTab("Tipo de mantenimiento", jPanel1);
 
@@ -238,6 +255,21 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 910, 620));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Listeners() {
+        ActionListener listener = (ActionEvent e) -> {
+            if (jRadioButton1.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroTodos, tablaTipos);
+            } else if (jRadioButton2.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroActivos, tablaTipos);
+            } else if (jRadioButton3.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroInactivos, tablaTipos);
+            }
+        };
+        jRadioButton1.addActionListener(listener);
+        jRadioButton2.addActionListener(listener);
+        jRadioButton3.addActionListener(listener);
+    }
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             int id_vehiculo = Integer.parseInt(jTextField2.getText().strip());
@@ -271,6 +303,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Tabla(Tbl_Combustibles, tablaTipos);
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -283,11 +316,12 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
             int actividad = Cmb_Actividad1.getSelectedIndex();
             int id = id_actual;
             String descripcion = jTextArea1.getText().strip();
-            
+
             int resultado = mantenimiento.Update_TipoMantenimiento(id, descripcion, actividad);
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Tabla(Tbl_Combustibles, tablaTipos);
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -296,7 +330,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void Tbl_CombustiblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_CombustiblesMouseClicked
-        
+
         int row = Tbl_Combustibles.getSelectedRow();
 
         DefaultTableModel Modelo = (DefaultTableModel) Tbl_Combustibles.getModel();
@@ -305,20 +339,30 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         jTextArea1.setText((String) Modelo.getValueAt(row, 1));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
-    public void Llenar_Tabla(JTable table, String tablaSQL) {
+    public void Llenar_Tabla(JTable table, String tabla) {
         try {
-            ResultSet Res = Otros.Consultar_Tabla(tablaSQL);
+            ResultSet Res = Otros.Consultar_Tabla(tabla);
             table.setModel(DbUtils.resultSetToTableModel(Res));
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
         }
     }
     
+    public void Llenar_TablaFiltro(String filtro, String tabla) {
+        try {
+            ResultSet Res = Otros.Consultar_TablaFiltro(tabla, filtro);
+            Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
+        } catch (SQLException ex) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Cmb_Actividad;
     private javax.swing.JComboBox<String> Cmb_Actividad1;
     private javax.swing.JTable Tbl_Combustibles;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -328,11 +372,13 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

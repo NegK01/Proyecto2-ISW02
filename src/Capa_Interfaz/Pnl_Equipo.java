@@ -10,6 +10,8 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Insets;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -28,12 +30,13 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     private final Equipo equipo = new Equipo();
     private int id_actual = 1;
     private Otros otros = new Otros();
-    private String tablaEquipo; 
-    
+    private String tablaEquipo;
+
     public Pnl_Equipo() {
         this.tablaEquipo = equipo.tablaTipos;
         initComponents();
         Llenar_Tabla();
+        Listeners();
     }
 
     /**
@@ -45,16 +48,19 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
         Txt_Nombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Cmb_Actividad1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -76,11 +82,6 @@ public class Pnl_Equipo extends javax.swing.JPanel {
             }
         });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 120, 40));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Falta poner filtros");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 380, 40));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,11 +127,42 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 203, 320, 40));
 
-        jLabel4.setIcon(new FlatSVGIcon("Imagenes/ParteEquipo_Estado.svg"));
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 350, 90));
+        jLabel5.setIcon(new FlatSVGIcon("Imagenes/ParteEquipo_Estado.svg"));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 350, 90));
+
+        jRadioButton1.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodos.svg"));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodosSelected.svg"));
+        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 70, -1));
+
+        jRadioButton2.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivos.svg"));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivosSelected.svg"));
+        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 80, -1));
+
+        jRadioButton3.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivos.svg"));
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
+        jPanel3.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, 90, -1));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 620));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Listeners() {
+        ActionListener listener = (ActionEvent e) -> {
+            if (jRadioButton1.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroTodos);
+            } else if (jRadioButton2.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroActivos);
+            } else if (jRadioButton3.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroInactivos);
+            }
+        };
+        jRadioButton1.addActionListener(listener);
+        jRadioButton2.addActionListener(listener);
+        jRadioButton3.addActionListener(listener);
+    }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
@@ -141,6 +173,7 @@ public class Pnl_Equipo extends javax.swing.JPanel {
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Tabla();
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -158,6 +191,7 @@ public class Pnl_Equipo extends javax.swing.JPanel {
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Tabla();
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -167,10 +201,10 @@ public class Pnl_Equipo extends javax.swing.JPanel {
 
     private void Tbl_CombustiblesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tbl_CombustiblesMouseClicked
         //        try {
-            //            id_actual = Sql.Sig_Id(tabla);
-            //        } catch (SQLException ex) {
-            //            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
-            //        }
+        //            id_actual = Sql.Sig_Id(tabla);
+        //        } catch (SQLException ex) {
+        //            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
+        //        }
 
         int row = Tbl_Combustibles.getSelectedRow();
 
@@ -186,10 +220,18 @@ public class Pnl_Equipo extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_Txt_NombreKeyPressed
 
-    
     public void Llenar_Tabla() {
         try {
             ResultSet Res = Otros.Consultar_Tabla(tablaEquipo);
+            Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
+        } catch (SQLException ex) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
+        }
+    }
+    
+    public void Llenar_TablaFiltro(String filtro) {
+        try {
+            ResultSet Res = Otros.Consultar_TablaFiltro(tablaEquipo, filtro);
             Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
@@ -200,12 +242,15 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Cmb_Actividad1;
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.JTextField Txt_Nombre;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

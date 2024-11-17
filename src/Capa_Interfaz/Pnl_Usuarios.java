@@ -10,6 +10,8 @@ import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.ui.FlatLineBorder;
 import java.awt.Color;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,11 +34,14 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
     private int rolActual = 1;
     private int actividadActual = 1;
     private final Color transparente = new Color(0, 0, 0, 0);
+    private String tablaUsuarios;
 
     public Pnl_Usuarios() {
+        this.tablaUsuarios = usuario.tablaUsuarios;
         initComponents();
         Llenar_Table();
         Txt_Nombre.setBackground(new Color(0,0,0,0));
+        Listeners();
     }
 
     /**
@@ -48,6 +53,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
@@ -61,6 +67,9 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -157,8 +166,39 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
 
         jLabel5.setIcon(new FlatSVGIcon("Imagenes/Usuarios_Rol.svg"));
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 350, 90));
-    }// </editor-fold>//GEN-END:initComponents
 
+        jRadioButton1.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodos.svg"));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodosSelected.svg"));
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 70, -1));
+
+        jRadioButton2.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivos.svg"));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivosSelected.svg"));
+        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 80, -1));
+
+        jRadioButton3.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivos.svg"));
+        buttonGroup1.add(jRadioButton3);
+        jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
+        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 90, -1));
+    }// </editor-fold>//GEN-END:initComponents
+    
+    private void Listeners() {
+        ActionListener listener = (ActionEvent e) -> {
+            if (jRadioButton1.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroTodos);
+            } else if (jRadioButton2.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroActivos);
+            } else if (jRadioButton3.isSelected()) {
+                Llenar_TablaFiltro(Otros.filtroInactivos);
+            }
+        };
+        jRadioButton1.addActionListener(listener);
+        jRadioButton2.addActionListener(listener);
+        jRadioButton3.addActionListener(listener);
+    }
+    
     private void Txt_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_NombreKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             Txt_Precio.requestFocus();
@@ -173,7 +213,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
 
         id_actual = Integer.parseInt(Modelo.getValueAt(row, 0).toString());
         Txt_Nombre.setText(String.valueOf(Modelo.getValueAt(row, 1)));
-        Txt_Precio.setText("1");
+        Txt_Precio.setText("password");
         Cmb_Actividad.setSelectedIndex(Integer.parseInt(Modelo.getValueAt(row, 2).toString()));
         Cmb_Actividad1.setSelectedIndex(Integer.parseInt(Modelo.getValueAt(row, 3).toString()));
         rolActual = Integer.parseInt(Modelo.getValueAt(row, 2).toString());
@@ -192,6 +232,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
             if (Res != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados exitosamente", "Importante", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Table();
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
@@ -219,6 +260,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
             if (resultado != 0) {
                 JOptionPane.showMessageDialog(null, "Datos guardados correctamente.", "Info", JOptionPane.INFORMATION_MESSAGE);
                 Llenar_Table();
+                jRadioButton1.setSelected(true);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese los datos correctamente.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
@@ -234,6 +276,15 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
             System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
         }
     }
+    
+    public void Llenar_TablaFiltro(String filtro) {
+        try {
+            ResultSet Res = usuario.Consultar_TablaUsuarioFiltro(filtro);
+            Tbl_Combustibles.setModel(DbUtils.resultSetToTableModel(Res));
+        } catch (SQLException ex) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + ex.getMessage());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Cmb_Actividad;
@@ -241,12 +292,16 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.JTextField Txt_Nombre;
     private javax.swing.JTextField Txt_Precio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables

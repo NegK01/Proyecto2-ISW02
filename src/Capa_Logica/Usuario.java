@@ -33,6 +33,10 @@ public class Usuario {
         return Conexion_SQL.consultar_TablaUsuario(tablaUsuarios);
     }
     
+    public ResultSet Consultar_TablaUsuarioFiltro(String filtro) throws SQLException {
+        return Conexion_SQL.consultar_TablaUsuarioFiltro(tablaUsuarios, filtro);
+    }
+    
     public int Consultar_CantAdmins() throws SQLException {
         return Conexion_SQL.Consultar_CantAdmins();
     }

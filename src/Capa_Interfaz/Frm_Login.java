@@ -194,7 +194,7 @@ public class Frm_Login extends javax.swing.JFrame {
             }
 
             int rolLogin = login.ValidarLogin(username, password);
-//            rolLogin = 1;
+            rolLogin = 1;
             if (rolLogin != -1) {
                 prc = new Frm_Principal(rolLogin);
                 prc.setLocationRelativeTo(null);
