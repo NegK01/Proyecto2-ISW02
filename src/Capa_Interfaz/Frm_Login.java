@@ -63,12 +63,12 @@ public class Frm_Login extends javax.swing.JFrame {
         Lbl_Login.setText("Login to your account");
         Pnl_Login.add(Lbl_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 250, 60));
 
-        Lbl_Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Lbl_Username.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Lbl_Username.setForeground(new java.awt.Color(0, 0, 0));
         Lbl_Username.setText("Username");
         Pnl_Login.add(Lbl_Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
-        Lbl_Password.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Lbl_Password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Lbl_Password.setForeground(new java.awt.Color(0, 0, 0));
         Lbl_Password.setText("Password");
         Pnl_Login.add(Lbl_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
@@ -89,8 +89,8 @@ public class Frm_Login extends javax.swing.JFrame {
         Pnl_Username.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Usr.setBackground(new java.awt.Color(239, 239, 239));
-        txt_Usr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_Usr.setForeground(new java.awt.Color(51, 51, 51));
+        txt_Usr.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_Usr.setForeground(new java.awt.Color(102, 102, 102));
         txt_Usr.setBorder(null);
         txt_Usr.setOpaque(true);
         txt_Usr.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -110,15 +110,15 @@ public class Frm_Login extends javax.swing.JFrame {
         Pnl_Username.setOpaque(false);
         Pnl_Username.setBackground(new Color(239, 239, 239));
         Pnl_Username.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
-        Pnl_Username.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 10));
+        Pnl_Username.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1.5f, 10));
 
         Pnl_Password.setBackground(new java.awt.Color(215, 215, 215));
         Pnl_Password.setForeground(new java.awt.Color(51, 51, 51));
         Pnl_Password.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Pwd.setBackground(new java.awt.Color(239, 239, 239));
-        txt_Pwd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_Pwd.setForeground(new java.awt.Color(51, 51, 51));
+        txt_Pwd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txt_Pwd.setForeground(new java.awt.Color(102, 102, 102));
         txt_Pwd.setBorder(null);
         txt_Pwd.setOpaque(true);
         txt_Pwd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -138,14 +138,14 @@ public class Frm_Login extends javax.swing.JFrame {
         Pnl_Password.setOpaque(false);
         Pnl_Password.setBackground(new Color(239, 239, 239));
         Pnl_Password.putClientProperty(FlatClientProperties.STYLE, "arc: 20");
-        Pnl_Password.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 10));
+        Pnl_Password.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1.5f, 10));
 
         getContentPane().add(Pnl_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 540, 360));
         // Custom Mao
         Pnl_Login.setOpaque(false);
         Pnl_Login.setBackground(new Color(239, 239, 239));
         Pnl_Login.putClientProperty(FlatClientProperties.STYLE, "arc: 50");
-        Pnl_Login.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 1, 50));
+        Pnl_Login.setBorder(new FlatLineBorder(new Insets(16, 16, 16, 16), Color.BLACK, 2, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,7 +194,7 @@ public class Frm_Login extends javax.swing.JFrame {
             }
 
             int rolLogin = login.ValidarLogin(username, password);
-            rolLogin = 1;
+//            rolLogin = 1;
             if (rolLogin != -1) {
                 prc = new Frm_Principal(rolLogin);
                 prc.setLocationRelativeTo(null);

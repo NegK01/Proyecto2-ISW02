@@ -67,6 +67,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         panelRound1 = new Capa_Interfaz.PanelRound();
         jTextField2 = new javax.swing.JTextField();
@@ -83,24 +84,28 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setText("Agregar");
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton4.setIcon(new FlatSVGIcon("Imagenes/GuardarContenido.svg"));
+        jButton4.setBackground(Otros.transparente);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 120, 40));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 330, 35));
 
-        jButton5.setText("Modificar");
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton5.setIcon(new FlatSVGIcon("Imagenes/ModificarContenido.svg"));
+        jButton5.setBackground(Otros.transparente);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 120, 40));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 330, 35));
 
         jTextArea1.setBackground(new java.awt.Color(232, 232, 232));
         jTextArea1.setColumns(20);
@@ -163,9 +168,19 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
         jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, 90, -1));
 
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setIcon(new FlatSVGIcon("Imagenes/NuevoRegistro.svg"));
+        jButton1.setBackground(Otros.transparente);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 330, 35));
+
         jTabbedPane1.addTab("Tipo de mantenimiento", jPanel1);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(246, 246, 246));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -252,7 +267,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("tab1", panelRound1);
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 910, 620));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1, 910, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void Listeners() {
@@ -339,6 +354,11 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
         jTextArea1.setText((String) Modelo.getValueAt(row, 1));
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTextArea1.setText("");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void Llenar_Tabla(JTable table, String tabla) {
         try {
             ResultSet Res = Otros.Consultar_Tabla(tabla);
@@ -363,6 +383,7 @@ public class Pnl_Mantenimiento extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> Cmb_Actividad1;
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

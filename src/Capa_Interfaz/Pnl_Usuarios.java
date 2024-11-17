@@ -70,10 +70,11 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(246, 246, 246));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 320, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 320, 30));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,23 +99,27 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(Tbl_Combustibles);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 430, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 430, 340));
 
-        jButton4.setText("Agregar");
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton4.setIcon(new FlatSVGIcon("Imagenes/GuardarContenido.svg"));
+        jButton4.setBackground(Otros.transparente);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 120, 40));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 330, 35));
 
-        jButton5.setText("Modificar");
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton5.setIcon(new FlatSVGIcon("Imagenes/ModificarContenido.svg"));
+        jButton5.setBackground(Otros.transparente);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 120, 40));
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, 330, 35));
 
         Cmb_Actividad.setBackground(new java.awt.Color(204, 204, 204));
         Cmb_Actividad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -122,7 +127,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         Cmb_Actividad.setBackground(Otros.transparente);
         Cmb_Actividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador" }));
         Cmb_Actividad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(Cmb_Actividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 333, 320, 40));
+        add(Cmb_Actividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 293, 320, 40));
         Cmb_Actividad.setBackground(Otros.transparente);
         Cmb_Actividad.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
 
@@ -132,12 +137,11 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         Cmb_Actividad1.setBackground(Otros.transparente);
         Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
         Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 443, 320, 40));
+        add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 403, 320, 40));
 
         Txt_Nombre.setBackground(new java.awt.Color(204, 204, 204));
         Txt_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Nombre.setForeground(new java.awt.Color(102, 102, 102));
-        Txt_Nombre.setText("Nombre de Usuario");
         Txt_Nombre.setBackground(Otros.transparente);
         Txt_Nombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -145,43 +149,52 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
                 Txt_NombreKeyPressed(evt);
             }
         });
-        add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 320, 70));
+        add(Txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 320, 70));
 
         Txt_Precio.setBackground(new java.awt.Color(204, 204, 204));
         Txt_Precio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Precio.setForeground(new java.awt.Color(102, 102, 102));
         Txt_Precio.setBackground(Otros.transparente);
-        Txt_Precio.setText("Contraseña");
         Txt_Precio.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        add(Txt_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 320, 70));
+        add(Txt_Precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 320, 70));
 
         jLabel9.setIcon(new FlatSVGIcon("Imagenes/TextArea.svg"));
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 350, 90));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 350, 90));
 
         jLabel1.setIcon(new FlatSVGIcon("Imagenes/Usuarios_Contrasena.svg"));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 350, 90));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 350, 90));
 
         jLabel4.setIcon(new FlatSVGIcon("Imagenes/Usuarios_Estado.svg"));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 350, 90));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 350, 90));
 
         jLabel5.setIcon(new FlatSVGIcon("Imagenes/Usuarios_Rol.svg"));
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 350, 90));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 350, 90));
 
         jRadioButton1.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodos.svg"));
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodosSelected.svg"));
-        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 70, -1));
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 70, -1));
 
         jRadioButton2.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivos.svg"));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarActivosSelected.svg"));
-        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 80, -1));
+        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 80, -1));
 
         jRadioButton3.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivos.svg"));
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
-        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 90, -1));
+        add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, 90, -1));
+
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setIcon(new FlatSVGIcon("Imagenes/NuevoRegistro.svg"));
+        jButton1.setBackground(Otros.transparente);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, 330, 35));
     }// </editor-fold>//GEN-END:initComponents
     
     private void Listeners() {
@@ -268,6 +281,13 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Txt_Nombre.setText("");
+        Txt_Precio.setText("");
+        Cmb_Actividad.setSelectedIndex(0);
+        Cmb_Actividad1.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void Llenar_Table() {
         try {
             ResultSet Res = usuario.Consultar_TablaUsuario();
@@ -293,6 +313,7 @@ public class Pnl_Usuarios extends javax.swing.JPanel {
     private javax.swing.JTextField Txt_Nombre;
     private javax.swing.JTextField Txt_Precio;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

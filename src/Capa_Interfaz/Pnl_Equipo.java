@@ -61,27 +61,32 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(246, 246, 246));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton4.setText("Agregar");
+        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton4.setIcon(new FlatSVGIcon("Imagenes/GuardarContenido.svg"));
+        jButton4.setBackground(Otros.transparente);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 120, 40));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 330, 35));
 
-        jButton5.setText("Modificar");
+        jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton5.setIcon(new FlatSVGIcon("Imagenes/ModificarContenido.svg"));
+        jButton5.setBackground(Otros.transparente);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 120, 40));
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 330, 35));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,7 +111,6 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         Txt_Nombre.setBackground(new java.awt.Color(204, 204, 204));
         Txt_Nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Txt_Nombre.setForeground(new java.awt.Color(102, 102, 102));
-        Txt_Nombre.setText("Nombre de la parte del equipo");
         Txt_Nombre.setBackground(Otros.transparente);
         Txt_Nombre.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -125,10 +129,10 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         Cmb_Actividad1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
         Cmb_Actividad1.setBackground(Otros.transparente);
         Cmb_Actividad1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel3.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 203, 320, 40));
+        jPanel3.add(Cmb_Actividad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 213, 320, 40));
 
         jLabel5.setIcon(new FlatSVGIcon("Imagenes/ParteEquipo_Estado.svg"));
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 350, 90));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 350, 90));
 
         jRadioButton1.setIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarTodos.svg"));
         buttonGroup1.add(jRadioButton1);
@@ -146,7 +150,18 @@ public class Pnl_Equipo extends javax.swing.JPanel {
         jRadioButton3.setSelectedIcon(new FlatSVGIcon("Imagenes/Filtro_MostrarInactivosSelected.svg"));
         jPanel3.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 400, 90, -1));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 620));
+        jButton1.setToolTipText("");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setIcon(new FlatSVGIcon("Imagenes/NuevoRegistro.svg"));
+        jButton1.setBackground(Otros.transparente);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 330, 35));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 940, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void Listeners() {
@@ -220,6 +235,10 @@ public class Pnl_Equipo extends javax.swing.JPanel {
 //        }
     }//GEN-LAST:event_Txt_NombreKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Txt_Nombre.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void Llenar_Tabla() {
         try {
             ResultSet Res = Otros.Consultar_Tabla(tablaEquipo);
@@ -243,6 +262,7 @@ public class Pnl_Equipo extends javax.swing.JPanel {
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.JTextField Txt_Nombre;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel5;

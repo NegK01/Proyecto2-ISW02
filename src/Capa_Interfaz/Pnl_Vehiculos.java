@@ -6,6 +6,7 @@ package Capa_Interfaz;
 
 import java.awt.event.KeyEvent;
 import Capa_Logica.*;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -46,16 +47,9 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
 
         PanelTabla = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Txt_Descripcion = new javax.swing.JTextArea();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         Btn_Guardar = new javax.swing.JButton();
         Btn_Modificar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -63,30 +57,27 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Txt_Placa = new javax.swing.JTextField();
-        jPanel5 = new javax.swing.JPanel();
-        Txt_Modelo = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        Txt_Marca = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         Cmb_Activo = new javax.swing.JComboBox<>();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         Btn_Nuevo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbl_Combustibles = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        Lbl_Combustible = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        Txt_Descripcion = new javax.swing.JTextField();
+        Txt_Marca = new javax.swing.JTextField();
+        Txt_Modelo = new javax.swing.JTextField();
         Lbl_Id = new javax.swing.JLabel();
+        Lbl_Combustible = new javax.swing.JLabel();
+        labelpro = new javax.swing.JLabel();
+        labelpro1 = new javax.swing.JLabel();
+        labelpro2 = new javax.swing.JLabel();
+        labelpro3 = new javax.swing.JLabel();
+        labelpro4 = new javax.swing.JLabel();
+        labelpro6 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tbl_Vehiculos = new javax.swing.JTable();
@@ -98,57 +89,14 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
 
         setAutoscrolls(true);
         setPreferredSize(new java.awt.Dimension(930, 620));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelTabla.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(246, 246, 246));
         jPanel1.setMinimumSize(new java.awt.Dimension(930, 620));
         jPanel1.setPreferredSize(new java.awt.Dimension(930, 620));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("Digite el modelo del vehiculo");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, 30));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Modelo:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 80, 40));
-
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Descripcion.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Descripcion.setColumns(20);
-        Txt_Descripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Descripcion.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Descripcion.setRows(5);
-        Txt_Descripcion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Txt_Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Txt_DescripcionKeyPressed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(Txt_Descripcion);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 310, 60));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 880, 10));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -161,37 +109,31 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         jLabel6.setText("Digite la placa del vehiculo en el espacio");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("Descripcion:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, 40));
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Breve nombre o descripcion del vehiculo");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 30));
-
         Btn_Guardar.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Guardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Btn_Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_Guardar.setText("Guardar Contenido");
+        Btn_Guardar.setIcon(new FlatSVGIcon("Imagenes/GuardarContenido.svg"));
+        Btn_Guardar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Btn_Guardar.setBackground(Otros.transparente);
         Btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_GuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 310, 30));
+        jPanel1.add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 330, 35));
 
         Btn_Modificar.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Modificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Btn_Modificar.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_Modificar.setText("Modificar Contenido");
+        Btn_Modificar.setIcon(new FlatSVGIcon("Imagenes/ModificarContenido.svg"));
+        Btn_Modificar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Btn_Modificar.setBackground(Otros.transparente);
         Btn_Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_ModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 310, 30));
+        jPanel1.add(Btn_Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 330, 35));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
@@ -252,99 +194,18 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 110, 70));
-
-        jPanel5.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Modelo.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Modelo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Modelo.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Modelo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Modelo, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Modelo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 310, 40));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 430, 30));
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("Marca:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 80, 40));
-
-        jPanel6.setBackground(new java.awt.Color(153, 153, 153));
-
-        Txt_Marca.setBackground(new java.awt.Color(204, 204, 204));
-        Txt_Marca.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        Txt_Marca.setForeground(new java.awt.Color(51, 51, 51));
-        Txt_Marca.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        Txt_Marca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Txt_MarcaKeyPressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Marca, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Txt_Marca, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 310, 40));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Digite marca del vehiculo");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, 30));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 430, 30));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 430, 30));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel14.setText("Actividad:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 110, 40));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setText("Esta el vehiculo activo/inactivo?");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, 30));
-        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 430, 30));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 430, 30));
 
         Cmb_Activo.setBackground(new java.awt.Color(204, 204, 204));
-        Cmb_Activo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Cmb_Activo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Cmb_Activo.setForeground(new java.awt.Color(102, 102, 102));
         Cmb_Activo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inactivo", "Activo" }));
+        Cmb_Activo.setBackground(Otros.transparente);
         Cmb_Activo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(Cmb_Activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 310, 50));
+        jPanel1.add(Cmb_Activo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 363, 320, 40));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 430, 10));
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel16.setText("ID:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, 110, 40));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(102, 102, 102));
@@ -354,13 +215,15 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         Btn_Nuevo.setBackground(new java.awt.Color(51, 51, 51));
         Btn_Nuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Btn_Nuevo.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_Nuevo.setText("Nuevo Registro");
+        Btn_Nuevo.setIcon(new FlatSVGIcon("Imagenes/NuevoRegistro.svg"));
+        Btn_Nuevo.setBackground(Otros.transparente);
+        Btn_Nuevo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Btn_Nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_NuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(Btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 540, 310, 30));
+        jPanel1.add(Btn_Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 330, 35));
 
         Tbl_Combustibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -387,62 +250,66 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         jLabel18.setText("Combustible:");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 110, 40));
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel19.setText("Combustible:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 110, 40));
+        Txt_Descripcion.setBackground(new java.awt.Color(204, 204, 204));
+        Txt_Descripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Descripcion.setForeground(new java.awt.Color(102, 102, 102));
+        Txt_Descripcion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Txt_Descripcion.setBackground(Otros.transparente);
+        Txt_Descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Txt_DescripcionKeyPressed(evt);
+            }
+        });
+        jPanel1.add(Txt_Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 320, 50));
 
-        jPanel7.setBackground(new java.awt.Color(153, 153, 153));
+        Txt_Marca.setBackground(new java.awt.Color(204, 204, 204));
+        Txt_Marca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Marca.setForeground(new java.awt.Color(102, 102, 102));
+        Txt_Marca.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Txt_Marca.setBackground(Otros.transparente);
+        Txt_Marca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Txt_MarcaKeyPressed(evt);
+            }
+        });
+        jPanel1.add(Txt_Marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 320, 50));
 
-        Lbl_Combustible.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Lbl_Combustible.setForeground(new java.awt.Color(51, 51, 51));
+        Txt_Modelo.setBackground(new java.awt.Color(204, 204, 204));
+        Txt_Modelo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Txt_Modelo.setForeground(new java.awt.Color(102, 102, 102));
+        Txt_Modelo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Txt_Modelo.setBackground(Otros.transparente);
+        jPanel1.add(Txt_Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 320, 50));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Lbl_Combustible, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Lbl_Combustible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 100, 30));
-
-        jPanel8.setBackground(new java.awt.Color(153, 153, 153));
-
-        Lbl_Id.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Lbl_Id.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Lbl_Id.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(Lbl_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 100, 30));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Lbl_Id, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Lbl_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        Lbl_Combustible.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Lbl_Combustible.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel1.add(Lbl_Combustible, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, 100, 30));
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 250, 100, 30));
+        labelpro.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Id.svg"));
+        jPanel1.add(labelpro, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 200, 140, 80));
+
+        labelpro1.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Nombre.svg"));
+        jPanel1.add(labelpro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 350, 90));
+
+        labelpro2.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Marca.svg"));
+        jPanel1.add(labelpro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 350, 90));
+
+        labelpro3.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Modelo.svg"));
+        jPanel1.add(labelpro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 350, 90));
+
+        labelpro4.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Estado.svg"));
+        jPanel1.add(labelpro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 350, 90));
+
+        labelpro6.setIcon(new FlatSVGIcon("Imagenes/Vehiculo_Combustible.svg"));
+        jPanel1.add(labelpro6, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 120, 140, 80));
 
         PanelTabla.addTab("Formulario", jPanel1);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBackground(new java.awt.Color(246, 246, 246));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tbl_Vehiculos.setModel(new javax.swing.table.DefaultTableModel(
@@ -463,7 +330,7 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(Tbl_Vehiculos);
 
-        jPanel9.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 890, 420));
+        jPanel9.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 870, 420));
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -485,16 +352,7 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
 
         PanelTabla.addTab("Tabla", jPanel9);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTabla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelTabla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(PanelTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1, 910, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_GuardarActionPerformed
@@ -540,7 +398,7 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
 
     private void Txt_PlacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_PlacaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Txt_Descripcion.requestFocus();
+            labelpro.requestFocus();
         }
     }//GEN-LAST:event_Txt_PlacaKeyPressed
 
@@ -574,12 +432,6 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Tbl_CombustiblesMouseClicked
 
-    private void Txt_DescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_DescripcionKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Txt_Marca.requestFocus();
-        }
-    }//GEN-LAST:event_Txt_DescripcionKeyPressed
-
     private void Txt_MarcaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_MarcaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             Txt_Modelo.requestFocus();
@@ -599,6 +451,12 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
         Lbl_Combustible.setText("");
         
     }//GEN-LAST:event_Tbl_VehiculosMouseClicked
+
+    private void Txt_DescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Txt_DescripcionKeyPressed
+        //        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //            Txt_Precio.requestFocus();
+            //        }
+    }//GEN-LAST:event_Txt_DescripcionKeyPressed
 
     public void Llenar_Table_Combustibles() {
         try {
@@ -628,40 +486,24 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
     private javax.swing.JTabbedPane PanelTabla;
     private javax.swing.JTable Tbl_Combustibles;
     private javax.swing.JTable Tbl_Vehiculos;
-    private javax.swing.JTextArea Txt_Descripcion;
+    private javax.swing.JTextField Txt_Descripcion;
     private javax.swing.JTextField Txt_Marca;
     private javax.swing.JTextField Txt_Modelo;
     private javax.swing.JTextField Txt_Placa;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -670,5 +512,11 @@ public class Pnl_Vehiculos extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JLabel labelpro;
+    private javax.swing.JLabel labelpro1;
+    private javax.swing.JLabel labelpro2;
+    private javax.swing.JLabel labelpro3;
+    private javax.swing.JLabel labelpro4;
+    private javax.swing.JLabel labelpro6;
     // End of variables declaration//GEN-END:variables
 }

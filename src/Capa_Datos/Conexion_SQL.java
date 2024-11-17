@@ -17,10 +17,10 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver:localhost:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
-                + "user=sa;"
-                + "password=;"
+                + "user=sqlUser;"
+                + "password=pass;"
                 + "encrypt=true;trustServerCertificate=true;";
 
         try {   

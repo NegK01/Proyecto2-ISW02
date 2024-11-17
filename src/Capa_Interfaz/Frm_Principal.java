@@ -235,7 +235,7 @@ public class Frm_Principal extends javax.swing.JFrame {
 
     private void Btn_VehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_VehiculosActionPerformed
         Pnl_Vehiculos Comp = new Pnl_Vehiculos();
-        Comp.setSize(930, 620);
+//        Comp.setSize(930, 620);
         Comp.setLocation(0, 0);
 
         Pnl_Contenedor.removeAll();
