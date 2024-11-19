@@ -8,19 +8,17 @@ Create database TransportesIIIPatitos
 Use TransportesIIIPatitos
 ---------------------------------------------------------|
 -- Crear Tablas -----------------------------------------|
-DROP DATABASE TransportesIIIPatitos;
 
--- *****Usuarios***** -- 
-CREATE TABLE Usuarios(  
+-- ***Usuarios*** -- 
+CREATE TABLE Usuarios(   
     id	        int primary key,
 	usuario		varchar(55) unique not null,
 	contrasena	varchar(256) not null,
 	rol			int not null, -- 1 = Admin  / 0	 = Usuario
 	activo      int not null, -- 1 = Activo / 0 = Inactivo
 );
---insert into Usuarios values (1,'1','c4ca4238a0b923820dcc509a6f75849b',1,1);
 
--- *****vehiculos***** --
+-- ***vehiculos*** --
 CREATE TABLE vehiculos(
     id					int PRIMARY KEY,
     placa				varchar(20) UNIQUE NOT NULL,
@@ -32,7 +30,7 @@ CREATE TABLE vehiculos(
 	CONSTRAINT fk_combustible	FOREIGN KEY(id_combustible) REFERENCES combustibles(id)
 );
 
--- *****combustibles***** --
+-- ***combustibles*** --
 CREATE TABLE combustibles(
     id				   int PRIMARY KEY,
     nombre             varchar(55) UNique NOT NULL,
@@ -40,25 +38,17 @@ CREATE TABLE combustibles(
     activo             int NOT NULL -- activo = 1, inactivo = 0
 );
 
-select * from combustibles where activo in (1,0)
-
-select id,nombre, Case When activo = 1 theN 'activo' 
-                When activo = 0 then 'inactivo' 
-                Else 'Desconocido' 
-                end as estado_activo 
-                from  combustibles;
-
-
--- tanques_combustible --
+-- ***tanques_combustible*** --
 CREATE TABLE tanques_combustible(
     id							int PRIMARY KEY,
+	descripcion					varchar(255) NOT NULL,
+	capacidad					decimal(10,2) NOT NULL,
     id_combustible				int NOT NULL,
-    capacidad					decimal(10,2) NOT NULL,
-    ubicacion					varchar(55),
-    CONSTRAINT fk_combustible	FOREIGN KEY(id_combustible) REFERENCES combustibles(id)
+	activo                      int NOT NULL,
+    CONSTRAINT foreing_combustible	FOREIGN KEY(id_combustible) REFERENCES combustibles(id) -- se cambio la foreing porque se repetia el nombre
 );
 
--- ingreso_de_combustible (factura) --
+-- ingreso_de_combustible (factura) -- ...................
 CREATE TABLE ingreso_de_combustible(
     id							int PRIMARY KEY,
     id_dispensado				int NOT NULL,
@@ -67,7 +57,7 @@ CREATE TABLE ingreso_de_combustible(
     CONSTRAINT fk_dispensado	FOREIGN KEY(id_dispensado) REFERENCES dispensadores(id)
 );
 
--- proveedores --
+-- proveedores -- ........................................
 CREATE TABLE proveedores(
     id								int PRIMARY KEY,
     nombre							varchar(100) NOT NULL,
@@ -79,15 +69,16 @@ CREATE TABLE proveedores(
     CONSTRAINT fk_usuario_compra	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
 );
 
--- dispensadores --
+-- ***dispensadores*** --
 CREATE TABLE dispensadores(
     id						int PRIMARY KEY,
+	descripcion				varchar(255),
     id_tanque				int NOT NULL,
-    ubicacion				varchar(55),
+	activo					int NOT NULL,
     CONSTRAINT fk_tanque	FOREIGN KEY(id_tanque) REFERENCES tanques_combustible(id)
 );
 
--- dispensando_de_combustible --
+-- dispensando_de_combustible -- .........................
 CREATE TABLE dispensando_de_combustible(
     id								int PRIMARY KEY,
     fecha_dispension				date NOT NULL,
@@ -100,7 +91,7 @@ CREATE TABLE dispensando_de_combustible(
     CONSTRAINT fk_usuario_dispensa	FOREIGN KEY(id_usuario) REFERENCES usuarios(id)
 );
 
--- *****partes_de_equipos (partes reemplazables)***** --
+-- ***partes_de_equipos (partes reemplazables)*** --
 CREATE TABLE partes_de_equipos(
     id		           int PRIMARY KEY,
 	--id_vehiculo		   int NOT NULL,
@@ -110,8 +101,8 @@ CREATE TABLE partes_de_equipos(
     --cantidad_stock     int NOT NULL,
 	activo             int NOT NULL
 );
-select * from partes_de_equipos where activo in (0)
--- *****tipos_de_mantenimientos***** --
+
+-- ***tipos_de_mantenimientos*** --
 CREATE TABLE tipos_de_mantenimientos(
     id				   int PRIMARY KEY,
     descripcion        varchar(255) NOT NULL,
@@ -119,14 +110,14 @@ CREATE TABLE tipos_de_mantenimientos(
 	activo             int NOT NULL
 );
 
--- asignacion_de_mantenimientos --
+-- ////asignacion_de_mantenimientos*///*/ --
 CREATE TABLE asignacion_de_mantenimientos(
     id										int PRIMARY KEY,
     id_placa_vehiculo						varchar(20) NOT NULL,
     id_mantenimiento						int NOT NULL,
 	id_parte_de_equipo						int NOT NULL,
-    fecha_de_desgaste						date NOT NULL, -- *
-	-- Preguntar si se utiliza estos 2 en conjunto o solo 1 
+    --fecha_de_desgaste						date NOT NULL, -- *
+	-- Seguir viendo cual es mejor entre fecha y kilometraje
     kilometraje								int NOT NULL, -- * 
 	--activo                                  int NOT NULL
     CONSTRAINT fk_vehiculo_mantenimiento	FOREIGN KEY(id_placa_vehiculo) REFERENCES vehiculos(placa),
@@ -134,16 +125,28 @@ CREATE TABLE asignacion_de_mantenimientos(
 	CONSTRAINT fk_parte_de_equipo		    FOREIGN KEY(id_parte_de_equipo) REFERENCES partes_de_equipos(id)
 );
 
--- boletas_de_mantenimientos --
-CREATE TABLE boletas_de_mantenimientos(
+-- ***boletas_de_mantenimientos_encabezado*** --
+CREATE TABLE boletas_de_mantenimientos_encabezado(
     id							int PRIMARY KEY,
-    id_asignacion				int NOT NULL,
-    fecha_emision				date NOT NULL,
-    costo_total					decimal(10,2) NOT NULL,
-    CONSTRAINT fk_asignacion	FOREIGN KEY(id_asignacion) REFERENCES asignacion_de_mantenimientos(id)
+	id_placa_vehiculo			varchar(20) NOT NULL,
+	mecanico					varchar(50) NOT NULL,
+	chofer						varchar(50) NOT NULL,
+    kilometraje					int NOT NULL,
+    CONSTRAINT fk_placa_vehiculo	FOREIGN KEY(id_placa_vehiculo) REFERENCES vehiculos(placa)
 );
 
--- *****bitacora***** --
+-- ***boletas_de_mantenimientos_detalle*** --
+CREATE TABLE boletas_de_mantenimientos_detalle(
+    id							int NOT NULL,
+	id_mantenimiento            int NOT NULL,
+	id_parte_de_equipo			int NOT NULL,
+	id_boleta_encabezado		int NOT NULL,
+	CONSTRAINT fk_mantenimiento				FOREIGN KEY(id_mantenimiento) REFERENCES tipos_de_mantenimientos(id),
+	CONSTRAINT fk_parte_de_equipo		    FOREIGN KEY(id_parte_de_equipo) REFERENCES partes_de_equipos(id),
+	CONSTRAINT fk_boleta_encabezado			FOREIGN KEY(id_boleta_encabezado) REFERENCES boletas_de_mantenimientos_encabezado(id)
+);
+
+-- ***bitacora*** --
 CREATE TABLE bitacora(
 	id int primary key,
 	fecha date not null,
@@ -155,7 +158,18 @@ CREATE TABLE bitacora(
 );
 
 ---------------------------------------------------------|
--- Selects De Prueba ------------------------------------|
+-- Pruebas ----------------------------------------------|
+DROP DATABASE TransportesIIIPatitos;
+delete from bitacora
+drop table bitacora
 Select * From bitacora
-
+insert into Usuarios values (1,'1','c4ca4238a0b923820dcc509a6f75849b',1,1);
+Select * from Usuarios
+select * from combustibles where activo in (1,0)
+select id,nombre, Case When activo = 1 theN 'activo' 
+                When activo = 0 then 'inactivo' 
+                Else 'Desconocido' 
+                end as estado_activo 
+                from  combustibles;
+select * from partes_de_equipos where activo in (0)
 ---------------------------------------------------------|
