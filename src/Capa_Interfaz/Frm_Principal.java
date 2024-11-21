@@ -139,6 +139,11 @@ public class Frm_Principal extends javax.swing.JFrame {
 
         Btn_Tanques.setIcon(new FlatSVGIcon("Imagenes/Btn_Tanques.svg"));
         Btn_Tanques.setFocusPainted(false);
+        Btn_Tanques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_TanquesActionPerformed(evt);
+            }
+        });
         Pnl_Menu.add(Btn_Tanques, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 240, 50));
 
         Btn_Dispensadores.setIcon(new FlatSVGIcon("Imagenes/Btn_Dispensadores.svg"));
@@ -289,6 +294,14 @@ public class Frm_Principal extends javax.swing.JFrame {
         Pnl_Contenedor.revalidate(); 
         Pnl_Contenedor.repaint(); 
     }//GEN-LAST:event_Btn_DashboardActionPerformed
+
+    private void Btn_TanquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_TanquesActionPerformed
+        Pnl_Tanque Comp = new Pnl_Tanque();
+        Pnl_Contenedor.removeAll();
+        Pnl_Contenedor.add(Comp);
+        Pnl_Contenedor.revalidate();
+        Pnl_Contenedor.repaint();
+    }//GEN-LAST:event_Btn_TanquesActionPerformed
 
     /**
      * @param args the command line arguments

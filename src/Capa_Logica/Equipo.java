@@ -14,18 +14,18 @@ import java.sql.SQLException;
  */
 public class Equipo {
     
-    private Obj_Equipos obj_Equipos;
-    private final Otros Sql = new Otros();
-    public final String tablaTipos = "partes_de_equipos";
-    
-    public int Insert_Equipo(String descripcion, int activo) throws SQLException {
-        int id = Otros.Sig_Id(tablaTipos);
-        obj_Equipos = new Obj_Equipos(id, descripcion, activo);
-        return Conexion_SQL.Insert_Equipo(obj_Equipos, tablaTipos);
-    }
-    
-    public int Update_Equipo(int id, String descripcion, int activo) throws SQLException {
-        obj_Equipos = new Obj_Equipos(id, descripcion, activo);
-        return Conexion_SQL.Update_Equipo(obj_Equipos, tablaTipos);
-    }
+        private Obj_Equipos obj_Equipos;
+        private final Otros Sql = new Otros();
+        public final String tablaTipos = "partes_de_equipos";
+
+        public int Insert_Equipo(String descripcion, int activo) throws SQLException {
+            int id = Otros.Sig_Id(tablaTipos);
+            obj_Equipos = new Obj_Equipos(id, descripcion, activo);
+            return Conexion_SQL.Insert_Equipo(obj_Equipos, tablaTipos);
+        }
+
+        public int Update_Equipo(int id, String descripcion, int activo) throws SQLException {
+            obj_Equipos = new Obj_Equipos(id, descripcion, activo);
+            return Conexion_SQL.Update_Equipo(obj_Equipos, tablaTipos);
+        }
 }

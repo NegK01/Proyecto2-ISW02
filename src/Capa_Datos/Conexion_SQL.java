@@ -17,7 +17,7 @@ import java.sql.Statement;
 public class Conexion_SQL {
 
     public static Connection getConnection() throws SQLException {
-        String CadenaConexion = "jdbc:sqlserver://192.168.0.8:1433;" // ip mao
+        String CadenaConexion = "jdbc:sqlserver://172.25.32.1:1433;" // ip mao
                 + "database=TransportesIIIPatitos;" // -- Nombre de la database nuestra
                 + "user=sqlUser;"
                 + "password=pass;"
@@ -57,6 +57,23 @@ public class Conexion_SQL {
         String Qry = "Insert Into " + tabla + " "
                    + "Values(" + obj.getId() + ","
                    + " '" + obj.getDescripcion()+ "',"
+                   + " " + obj.getActivo() + ")";
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Insert_Tanque(Obj_Tanque obj, String tabla) throws SQLException {
+
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Insert Into " + tabla + " "
+                   + "Values(" + obj.getId() + ","
+                   + " '" + obj.getNombre()+ "',"
+                   + " " + obj.getCapacidad()+ ","
+                   + " " + obj.getId_combustible()+ ","
                    + " " + obj.getActivo() + ")";
         Rows_Affected = sql.executeUpdate(Qry);
 
@@ -191,7 +208,6 @@ public class Conexion_SQL {
             ResultSet Opr = sql.executeQuery(Consulta);
             while (Opr.next()) {
                 Resultado = Opr.getInt(1);
-                System.out.println("\u001B[32mID ACTUAL:\u001B[0m " + Resultado);
             }
 
         } catch (SQLException e) {
@@ -288,6 +304,23 @@ public class Conexion_SQL {
             return null;
         }
     }   
+    
+    public static int BuscarId_XNombreSQL(String tabla, String condicion) throws SQLException {
+        int Resultado = 1;
+        try {
+            Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+            String Consulta = "select id from " + tabla + " where nombre = " + condicion;
+
+            ResultSet Opr = sql.executeQuery(Consulta);
+            while (Opr.next()) {
+                Resultado = Opr.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("\u001B[31mERROR:\u001B[0m " + e.getMessage());
+        }
+        return Resultado;
+    }  
 
     // UPDATES
     // -- Modifica la info del Equipo al table Equipos  
@@ -346,6 +379,23 @@ public class Conexion_SQL {
         //String que contiene el script de  la operacion de sql
         String Qry = "Update " + tabla + " "
                    + "Set descripcion = '" + obj.getDescripcion() + "', "
+                   + "activo = " + obj.getActivo()+ " "
+                   + "Where id = " + obj.getId();
+        
+        Rows_Affected = sql.executeUpdate(Qry);
+
+        return Rows_Affected;
+    }
+    
+    public static int Update_Tanque(Obj_Tanque obj, String tabla) throws SQLException {
+        int Rows_Affected = 0;
+        //Creacion de sentencia para manejo en sql
+        Statement sql = (Statement) Conexion_SQL.getConnection().createStatement();
+        //String que contiene el script de  la operacion de sql
+        String Qry = "Update " + tabla + " "
+                   + "Set nombre = '" + obj.getNombre() + "', "
+                   + "capacidad = " + obj.getCapacidad()+ ", "
+                   + "id_combustible = " + obj.getId_combustible()+ ", "
                    + "activo = " + obj.getActivo()+ " "
                    + "Where id = " + obj.getId();
         
