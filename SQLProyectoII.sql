@@ -51,7 +51,8 @@ CREATE TABLE combustibles(
 CREATE TABLE tanques_combustible(
     id							int PRIMARY KEY,
 	nombre						varchar(60) Unique NOT NULL,
-	capacidad					decimal NOT NULL,
+	descripcion					varchar(255) NOT NULL, -- una descipcion por si desea agregar mas detalles como su ubicacion
+	capacidad					int NOT NULL, --capacidad del 0 al 100%, se modifica segun compra 
     id_combustible				int NOT NULL,
 	activo                      int NOT NULL
     CONSTRAINT foreing_combustible	FOREIGN KEY(id_combustible) REFERENCES combustibles(id)
@@ -81,7 +82,7 @@ CREATE TABLE ingreso_de_combustible_detalle(
 	id_ingreso_encabezado		int not null,
 	id_combustible				int not null,
 	id_tanque					int not null,
-    cantidad_comprada			decimal not null, -- cantidad de combustible comprado
+    cantidad_comprada			int not null, -- cantidad de combustible comprado, recordar que tanque se mide de 0 a 100%
     costo_de_compra				decimal not null  -- costo de la compra de ese combustible
     CONSTRAINT fk_ingreso_encabezado	FOREIGN KEY(id_ingreso_encabezado) REFERENCES ingreso_de_combustible(id),
 	CONSTRAINT fk_ingreso_combustible	FOREIGN KEY(id_combustible) REFERENCES combustibles(id),
